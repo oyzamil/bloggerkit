@@ -1,4 +1,19 @@
 {
-  "name": "bloggerkit",
-  "version": "0.0.0"
+	"name": "bloggerkit",
+	"version": "0.0.0",
+	"description": "A library for Blogger Developers.",
+	"type": "module",
+	"keywords": [
+		"blogspot",
+		"blogger",
+		"blogger-api",
+		"blogger-feed",
+		"blogger-widgets"
+	],
+	"license": "MIT",
+	"homepage": "https://github.com/oyzamil/bloggerkit#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/oyzamil/bloggerkit.git"
+	}
 }
