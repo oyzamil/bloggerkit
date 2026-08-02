@@ -1,0 +1,644 @@
+/* ===========================================================
+   blogr demo — design system, rebuilt on Tailwind CSS v4.
+   Same visual system as the original hand-written CSS, but every
+   declaration now comes from Tailwind's utility engine: colors,
+   fonts, radii and animations are design tokens declared once in
+   @theme, and every component class below is just `@apply`'d
+   utilities (plus the handful of things Tailwind has no utility
+   for: pseudo-element content, third‑party‑plugin‑generated
+   markup, keyframes). Class names are unchanged from the original
+   so every page and every *.page.js template keeps working as-is.
+   =========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
+@theme {
+	/* colors are utilities backed by CSS custom properties below, so
+	   bg-paper / text-ink / border-border etc. automatically follow
+	   the light/dark swap on <html data-theme="..."> with zero dark:
+	   variants needed anywhere */
+	--color-ink: var(--ink);
+	--color-ink-soft: var(--ink-soft);
+	--color-ink-faint: var(--ink-faint);
+	--color-paper: var(--paper);
+	--color-paper-raised: var(--paper-raised);
+	--color-paper-sunken: var(--paper-sunken);
+	--color-border: var(--border);
+	--color-accent: var(--accent);
+	--color-accent-deep: var(--accent-deep);
+	--color-accent-ink: var(--accent-ink);
+	--color-wire: var(--wire);
+	--color-wire-deep: var(--wire-deep);
+	--color-danger: var(--danger);
+
+	--font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+	--font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+	--font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+	--radius-sm: 8px;
+	--radius: 12px;
+	--radius-lg: 18px;
+
+	--breakpoint-shell: 860px;
+
+	--animate-pulse-soft: pulse-soft 1s infinite;
+	--animate-pulse-slower: pulse-soft 1.8s ease-in-out infinite;
+	--animate-scroll-left: scroll-left 38s linear infinite;
+	--animate-toast-in: toast-in 0.2s ease;
+
+	@keyframes pulse-soft {
+		0%,
+		100% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0.35;
+		}
+	}
+	@keyframes scroll-left {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(-50%);
+		}
+	}
+	@keyframes toast-in {
+		from {
+			transform: translateY(6px);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+}
+
+/* ---------- theme tokens (the only "raw" CSS in this file — these
+   values are what the Tailwind color utilities above resolve to,
+   and are what actually flip when data-theme changes) ---------- */
+:root {
+	--ink: #14181f;
+	--ink-soft: #4a5061;
+	--ink-faint: #767d8e;
+	--paper: #eef0f4;
+	--paper-raised: #ffffff;
+	--paper-sunken: #e2e5eb;
+	--border: #d7dbe3;
+	--accent: #ff6b35;
+	--accent-deep: #e8491c;
+	--accent-ink: #fff5ef;
+	--wire: #1f8a85;
+	--wire-deep: #146864;
+	--danger: #d1373f;
+	--shadow: 0 1px 2px rgba(20, 24, 31, 0.04), 0 10px 28px -12px rgba(20, 24, 31, 0.16);
+	--shadow-sm: 0 1px 2px rgba(20, 24, 31, 0.06);
+	color-scheme: light;
+}
+html[data-theme="dark"] {
+	--ink: #eef0f4;
+	--ink-soft: #b7bccb;
+	--ink-faint: #7d8496;
+	--paper: #12151b;
+	--paper-raised: #1a1e26;
+	--paper-sunken: #0d0f14;
+	--border: #262b35;
+	--accent: #ff7a49;
+	--accent-deep: #ff5b23;
+	--accent-ink: #2a1810;
+	--wire: #33b0a8;
+	--wire-deep: #1f8a85;
+	--shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 32px -12px rgba(0, 0, 0, 0.55);
+	color-scheme: dark;
+}
+
+@layer base {
+	html {
+		-webkit-text-size-adjust: 100%;
+	}
+	body {
+		@apply m-0 bg-paper text-ink font-sans text-base leading-[1.6] transition-colors duration-[250ms];
+	}
+	img {
+		@apply max-w-full block;
+	}
+	a {
+		@apply text-wire no-underline;
+	}
+	a:hover {
+		@apply underline;
+	}
+	:focus-visible {
+		@apply outline-2 outline-accent outline-offset-2 rounded;
+	}
+	h1,
+	h2,
+	h3,
+	h4 {
+		@apply font-display font-semibold leading-[1.15] m-0 mb-[0.5em] tracking-[-0.01em];
+	}
+	code,
+	pre,
+	kbd {
+		@apply font-mono;
+	}
+	p {
+		@apply mb-[1em] text-ink-soft;
+	}
+}
+
+@layer components {
+	.mono {
+		@apply font-mono;
+	}
+
+	.eyebrow {
+		@apply inline-flex items-center gap-2 font-mono text-[0.72rem] font-semibold tracking-[0.09em] uppercase text-accent-deep;
+		&::before {
+			content: "";
+			@apply w-[7px] h-[7px] rounded-full bg-accent shadow-[0_0_0_3px_var(--accent-ink)];
+		}
+	}
+
+	/* ---------- layout shell ---------- */
+
+	.shell {
+		@apply max-w-[1220px] mx-auto px-7;
+	}
+
+	.site-header {
+		@apply sticky top-0 z-40 border-b border-border backdrop-blur-[14px];
+		background: color-mix(in srgb, var(--paper) 88%, transparent);
+		backdrop-filter: saturate(180%) blur(14px);
+	}
+	.site-header__bar {
+		@apply max-w-[1220px] mx-auto px-7 py-[14px] flex items-center gap-6;
+	}
+
+	.brand {
+		@apply flex items-baseline gap-2 font-display font-bold text-[1.15rem] text-ink whitespace-nowrap;
+	}
+	.brand__mark {
+		@apply text-accent;
+	}
+	.brand__tag {
+		@apply font-mono text-[0.68rem] font-medium text-ink-faint border border-border px-[6px] py-[2px] rounded-[5px] tracking-[0.02em];
+	}
+
+	/* menuify target: flat <ul><li><a> becomes this nav; _prefixed items nest */
+	#primary-menu {
+		@apply list-none flex items-center gap-[2px] m-0 p-0 text-[0.9rem] relative;
+
+		li {
+			@apply relative;
+		}
+		a {
+			@apply block px-3 py-2 rounded-sm text-ink-soft font-semibold;
+		}
+		> li > a {
+			@apply whitespace-nowrap;
+		}
+		a:hover,
+		a.is-active {
+			@apply bg-paper-sunken text-ink no-underline;
+		}
+		/* .sub-menu / li.has-sub are generated by the menuify() plugin at
+		   runtime, so this bit stays hand-authored CSS rather than
+		   utility classes we can't attach to plugin-created markup */
+		ul.sub-menu {
+			@apply list-none m-0 p-[6px] absolute top-full left-0 min-w-[190px] bg-paper-raised border border-border rounded-lg flex-col;
+			box-shadow: var(--shadow);
+			display: none;
+		}
+		li.has-sub:hover > ul.sub-menu,
+		li.has-sub:focus-within > ul.sub-menu {
+			display: flex;
+		}
+		li.has-sub > a::after {
+			content: "›";
+			@apply inline-block ml-[5px] opacity-60 text-[0.8em];
+			transform: rotate(90deg);
+		}
+	}
+
+	.header-actions {
+		@apply ml-auto flex items-center gap-[10px];
+	}
+
+	.icon-btn {
+		@apply inline-flex items-center justify-center w-[34px] h-[34px] rounded-sm border border-border bg-paper-raised text-ink-soft cursor-pointer text-base;
+		&:hover {
+			@apply border-accent text-accent-deep;
+		}
+	}
+
+	.pill-link {
+		@apply inline-flex items-center gap-[6px] px-[13px] py-[7px] rounded-full bg-ink font-bold text-[0.82rem];
+		color: var(--paper) !important;
+		text-decoration: none !important;
+		&:hover {
+			@apply bg-accent-deep;
+		}
+	}
+
+	/* ---------- page layout: sidebar + content ---------- */
+
+	.layout {
+		@apply max-w-[1220px] mx-auto px-7 pt-[34px] pb-[90px] grid gap-10 items-start;
+		grid-template-columns: 220px minmax(0, 1fr);
+	}
+
+	.sidebar {
+		@apply relative;
+	}
+	.sidebar-inner {
+		@apply flex flex-col gap-[2px];
+	}
+	.sidebar-group {
+		@apply mb-[18px];
+		h4 {
+			@apply font-mono text-[0.68rem] uppercase tracking-[0.09em] text-ink-faint m-0 mb-2 ml-[10px];
+		}
+	}
+	.sidebar a {
+		@apply flex items-center gap-2 px-[10px] py-[7px] rounded-sm text-ink-soft text-[0.88rem] font-semibold;
+		&:hover {
+			@apply bg-paper-sunken no-underline text-ink;
+		}
+		&.is-active {
+			@apply bg-accent-ink text-accent-deep;
+		}
+		.dot {
+			@apply w-[5px] h-[5px] rounded-full bg-border;
+		}
+		&.is-active .dot {
+			@apply bg-accent;
+		}
+	}
+
+	.content {
+		@apply min-w-0;
+	}
+
+	/* ---------- hero (home only) ---------- */
+
+	.hero {
+		@apply pt-16 pb-10 border-b border-border;
+		h1 {
+			font-size: clamp(2.3rem, 4vw + 1rem, 3.6rem);
+			@apply max-w-[16ch] my-[0.4em] mt-0 mb-[0.3em];
+		}
+		p.lede {
+			@apply text-[1.1rem] max-w-[56ch] text-ink-soft;
+		}
+	}
+	.hero-actions {
+		@apply flex gap-3 my-[22px] mb-2 flex-wrap;
+	}
+
+	.btn {
+		@apply inline-flex items-center gap-2 px-[18px] py-[11px] rounded-sm font-bold text-[0.92rem] border border-transparent cursor-pointer;
+		font-family: inherit;
+		&:hover {
+			@apply no-underline;
+		}
+	}
+	.btn-primary {
+		@apply bg-accent text-[#1b1102];
+		&:hover {
+			@apply bg-accent-deep text-white;
+		}
+	}
+	.btn-ghost {
+		@apply bg-transparent border-border text-ink;
+		&:hover {
+			@apply border-ink-faint;
+		}
+	}
+	.btn-sm {
+		@apply px-3 py-[7px] text-[0.82rem] rounded-[7px];
+	}
+
+	/* ticker: the signature element — a live scrolling wire of raw feed entries */
+	.ticker {
+		@apply mt-[34px] border border-border rounded bg-ink overflow-hidden relative;
+		color: #cfe8e6;
+	}
+	.ticker__head {
+		@apply flex items-center gap-2 px-[14px] py-[9px] font-mono text-[0.72rem] tracking-[0.08em] uppercase border-b;
+		color: #8fb9b6;
+		border-color: rgba(255, 255, 255, 0.08);
+	}
+	.ticker__head .live-dot {
+		@apply w-[7px] h-[7px] rounded-full animate-pulse-slower;
+		background: #37e6c4;
+		box-shadow: 0 0 0 4px rgba(55, 230, 196, 0.18);
+	}
+	.ticker__track {
+		@apply flex gap-12 whitespace-nowrap py-3 font-mono text-[0.85rem] animate-scroll-left;
+		width: max-content;
+		span {
+			color: #6f9c99;
+		}
+		span em {
+			@apply not-italic;
+			color: #eef0f4;
+		}
+	}
+	.ticker:hover .ticker__track {
+		animation-play-state: paused;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.ticker__track {
+			animation: none;
+			@apply overflow-x-auto;
+		}
+	}
+
+	/* ---------- page header (interior pages) ---------- */
+
+	.page-head {
+		@apply mb-[30px];
+		h1 {
+			font-size: clamp(1.7rem, 2.4vw + 1rem, 2.3rem);
+			@apply mt-[0.3em];
+		}
+		p {
+			@apply max-w-[62ch] text-[1.02rem];
+		}
+	}
+
+	/* ---------- cards / playground panels ---------- */
+
+	.card {
+		@apply bg-paper-raised border border-border rounded-lg mb-[26px] overflow-hidden;
+		box-shadow: var(--shadow-sm);
+	}
+	.card__head {
+		@apply flex items-baseline justify-between gap-3 px-[22px] py-[18px] border-b border-border flex-wrap;
+		h3 {
+			@apply m-0 text-[1.08rem];
+		}
+		.endpoint {
+			@apply font-mono text-[0.78rem] text-wire-deep px-[9px] py-1 rounded-[6px];
+			background: color-mix(in srgb, var(--wire) 12%, transparent);
+		}
+	}
+	.card__body {
+		@apply px-[22px] py-5;
+	}
+	.card__desc {
+		@apply px-5 pt-5 text-ink-faint text-[0.92rem];
+	}
+
+	.grid-2 {
+		@apply grid gap-[22px] max-shell:grid-cols-1;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	}
+
+	.controls {
+		@apply grid gap-[14px] mb-4;
+		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	}
+	.field {
+		@apply flex flex-col gap-[6px];
+		label {
+			@apply text-[0.74rem] font-bold uppercase tracking-[0.05em] text-ink-faint;
+		}
+		input[type="text"],
+		input[type="number"],
+		input[type="date"],
+		input[type="search"],
+		select,
+		textarea {
+			@apply text-[0.9rem] px-[10px] py-2 rounded-sm border border-border bg-paper text-ink;
+			font: inherit;
+			font-size: 0.9rem;
+			&:focus {
+				@apply border-accent;
+			}
+		}
+		textarea {
+			@apply min-h-[90px] resize-y font-mono text-[0.82rem];
+		}
+	}
+	.checkfield {
+		@apply flex-row items-center gap-2;
+		label {
+			@apply normal-case font-semibold text-ink-soft tracking-normal text-[0.85rem];
+		}
+	}
+
+	.chips {
+		@apply flex flex-wrap gap-2 mb-1;
+	}
+	.chip {
+		@apply inline-flex items-center gap-[6px] px-3 py-[6px] rounded-full border border-border bg-paper text-ink-soft text-[0.82rem] font-semibold cursor-pointer;
+		&:hover {
+			@apply border-accent;
+		}
+		&.is-selected {
+			@apply bg-accent border-accent text-[#1b1102];
+		}
+	}
+
+	.actions-row {
+		@apply flex gap-[10px] flex-wrap my-[6px] mb-[18px];
+	}
+
+	.result {
+		@apply border-t border-dashed border-border pt-4 mt-1;
+		&:empty {
+			@apply hidden;
+		}
+	}
+
+	pre.code {
+		@apply mb-5 bg-paper-sunken border border-border rounded text-[0.8rem] leading-[1.55] overflow-x-auto text-ink-soft;
+		padding: 14px 16px;
+		.tok-key {
+			@apply text-wire-deep;
+		}
+		.tok-str {
+			@apply text-accent-deep;
+		}
+		.tok-fn {
+			@apply text-ink font-semibold;
+		}
+		.tok-com {
+			@apply text-ink-faint italic;
+		}
+	}
+
+	.status-line {
+		@apply flex items-center gap-2 font-mono text-[0.78rem] text-ink-faint mb-3;
+		.dot {
+			@apply w-[6px] h-[6px] rounded-full bg-border;
+		}
+		&.is-loading .dot {
+			@apply bg-accent animate-pulse-soft;
+		}
+		&.is-ok .dot {
+			@apply bg-wire;
+		}
+		&.is-error .dot {
+			@apply bg-danger;
+		}
+	}
+
+	.error-box {
+		@apply rounded-sm px-[14px] py-3 text-[0.86rem] font-mono;
+		border: 1px solid color-mix(in srgb, var(--danger) 40%, var(--border));
+		background: color-mix(in srgb, var(--danger) 8%, var(--paper-raised));
+		color: var(--danger);
+	}
+
+	.empty-box {
+		@apply border border-dashed border-border rounded-sm p-[18px] text-center text-ink-faint text-[0.88rem];
+	}
+
+	/* ---------- post/page cards ---------- */
+
+	.post-grid {
+		@apply grid gap-4;
+		grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+	}
+	.post-card {
+		@apply border border-border rounded overflow-hidden bg-paper flex flex-col;
+	}
+	.post-card__thumb {
+		@apply relative overflow-hidden bg-paper-sunken;
+		aspect-ratio: 16 / 10;
+		background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><rect width="20" height="20" fill="none"/></svg>');
+		img {
+			@apply w-full h-full object-cover opacity-0 transition-opacity duration-[400ms];
+			/* .lazy-ify is added by blogr-plugins' lazify() once an image
+			   has finished loading — the class name is owned by that
+			   plugin, so the fade-in target stays plain CSS */
+			&.lazy-ify {
+				@apply opacity-100;
+			}
+		}
+	}
+	.post-card__body {
+		@apply flex flex-col gap-[6px] flex-1;
+		padding: 12px 14px 14px;
+	}
+	.post-card__meta {
+		@apply font-mono text-[0.7rem] text-ink-faint;
+	}
+	.post-card__title {
+		@apply font-display font-semibold text-[0.98rem] text-ink leading-[1.3];
+	}
+	.post-card__labels {
+		@apply mt-auto flex gap-[6px] flex-wrap;
+		span {
+			@apply text-[0.68rem] font-bold uppercase tracking-[0.04em] text-wire-deep px-[7px] py-[2px] rounded-[5px];
+			background: color-mix(in srgb, var(--wire) 12%, transparent);
+		}
+	}
+
+	.pager-controls {
+		@apply flex items-center gap-[10px] mt-[18px] text-[0.85rem] text-ink-faint flex-wrap;
+	}
+
+	/* ---------- table of contents (tocify target) ---------- */
+
+	#toc {
+		@apply list-none m-0 p-0 text-[0.86rem];
+		ul {
+			@apply list-none pl-[14px] my-1;
+		}
+		a {
+			@apply text-ink-soft font-semibold;
+		}
+		li {
+			@apply my-1;
+		}
+	}
+
+	/* ---------- footer ---------- */
+
+	.site-footer {
+		@apply border-t border-border text-ink-faint text-[0.86rem];
+		padding: 34px 0 60px;
+		.shell {
+			@apply flex justify-between items-center flex-wrap gap-3;
+		}
+		a {
+			@apply text-ink-soft;
+		}
+	}
+
+	/* ---------- misc ---------- */
+
+	.kv {
+		@apply grid gap-x-[18px] gap-y-[6px] text-[0.88rem];
+		grid-template-columns: max-content 1fr;
+		dt {
+			@apply text-ink-faint font-semibold;
+		}
+		dd {
+			@apply m-0 text-ink;
+		}
+	}
+
+	.stat-row {
+		@apply grid gap-[14px];
+		grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+	}
+	.stat {
+		@apply border border-border rounded-lg bg-paper;
+		padding: 14px 16px;
+		.num {
+			@apply font-display text-[1.7rem] font-bold text-ink;
+		}
+		.label {
+			@apply text-[0.75rem] text-ink-faint uppercase tracking-[0.06em];
+		}
+	}
+
+	.toast-stack {
+		@apply fixed bottom-[18px] right-[18px] flex flex-col gap-2 z-[100];
+	}
+	.toast {
+		@apply bg-ink text-paper px-4 py-[10px] rounded-sm text-[0.85rem] animate-toast-in;
+		box-shadow: var(--shadow);
+	}
+
+	.badge {
+		@apply inline-flex items-center gap-[5px] font-mono text-[0.72rem] px-2 py-[3px] rounded-[6px] bg-paper-sunken text-ink-soft border border-border;
+	}
+
+	.divider {
+		@apply border-0 border-t border-border my-[26px];
+	}
+
+	.img-preview {
+		@apply border border-border rounded-lg flex items-center justify-center overflow-hidden;
+		min-height: 220px;
+		background: repeating-conic-gradient(var(--paper-sunken) 0% 25%, var(--paper) 0% 50%) 50% / 18px 18px;
+		img {
+			@apply max-h-[320px];
+		}
+	}
+
+	@media (max-width: 860px) {
+		.layout {
+			@apply grid-cols-1;
+		}
+		.sidebar {
+			@apply static border-b border-border pb-[18px] mb-[6px];
+		}
+		.sidebar-inner {
+			@apply flex-row flex-wrap;
+		}
+		#primary-menu {
+			@apply hidden;
+		}
+	}
+}
+
+@source "../**/*.{html,js}";

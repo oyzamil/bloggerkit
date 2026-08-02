@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Archive · blogr demo</title>
+	<script src="assets/head.js"></script>
+	<link rel="stylesheet" href="assets/style.css" />
+</head>
+
+<body>
+	<header class="site-header">
+		<div id="site-header"></div>
+	</header>
+
+	<div class="layout">
+		<aside class="sidebar">
+			<nav id="site-sidebar"></nav>
+		</aside>
+
+		<main class="content">
+			<div class="page-head">
+				<span class="eyebrow">Content</span>
+				<h1>Archive</h1>
+				<p>Blogger's feed API has no dedicated archive endpoint — <code>archive.*</code> is built on
+					<code>publishedMin</code>/<code>publishedMax</code> range queries, with <code>years()</code> derived
+					from the oldest/newest post.
+				</p>
+			</div>
+
+			<div class="card">
+				<div class="card__head">
+					<h3>blog.archive.years()</h3>
+					<span class="endpoint">derived — no direct endpoint</span>
+				</div>
+				<div class="card__body">
+					<div class="status-line is-loading" id="years-status"><span class="dot"></span>fetching…</div>
+					<div class="chips" id="years-chips"></div>
+				</div>
+			</div>
+
+			<div class="grid-2">
+				<div class="card">
+					<div class="card__head">
+						<h3>blog.archive.year(year)</h3>
+						<span class="endpoint">publishedMin/Max = Jan 1 – Jan 1</span>
+					</div>
+					<div class="card__body">
+						<div class="actions-row">
+							<input type="number" id="year-input" placeholder="e.g. 2023"
+								class="w-[110px] p-2 rounded-sm border border-border bg-paper text-ink" />
+							<button class="btn btn-primary btn-sm" id="year-run">Run</button>
+						</div>
+						<div class="status-line" id="year-status"></div>
+						<div id="year-result"></div>
+						<div class="pager-controls" id="year-pager"></div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card__head">
+						<h3>blog.archive.month(year, month)</h3>
+						<span class="endpoint">publishedMin/Max = 1st – 1st next month</span>
+					</div>
+					<div class="card__body">
+						<div class="actions-row">
+							<input type="number" id="month-year-input" placeholder="year"
+								class="w-[90px] p-2 rounded-sm border border-border bg-paper text-ink" />
+							<select id="month-input" class="p-2 rounded-sm border border-border bg-paper text-ink">
+								<option value="1">January</option>
+								<option value="2">February</option>
+								<option value="3">March</option>
+								<option value="4">April</option>
+								<option value="5">May</option>
+								<option value="6">June</option>
+								<option value="7">July</option>
+								<option value="8">August</option>
+								<option value="9">September</option>
+								<option value="10">October</option>
+								<option value="11">November</option>
+								<option value="12">December</option>
+							</select>
+							<button class="btn btn-primary btn-sm" id="month-run">Run</button>
+						</div>
+						<div class="status-line" id="month-status"></div>
+						<div id="month-result"></div>
+						<div class="pager-controls" id="month-pager"></div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<footer class="site-footer">
+		<div id="site-footer"></div>
+	</footer>
+
+	<script src="https://unpkg.com/blogr-plugins/dist/blogr-plugins.min.js"></script>
+	<script src="../dist/blogr.min.js"></script>
+	<script src="assets/common.js"></script>
+	<script src="assets/archive.page.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Posts · blogr demo</title>
+	<script src="assets/head.js"></script>
+	<link rel="stylesheet" href="assets/style.css" />
+</head>
+
+<body>
+	<header class="site-header">
+		<div id="site-header"></div>
+	</header>
+
+	<div class="layout">
+		<aside class="sidebar">
+			<nav id="site-sidebar"></nav>
+		</aside>
+
+		<main class="content">
+			<div class="page-head">
+				<span class="eyebrow">Content</span>
+				<h1>Posts</h1>
+				<p>Every option <code>posts()</code> accepts, a single-post lookup, and the three convenience readers:
+					<code>latest()</code>, <code>featured()</code> and <code>random()</code>.
+				</p>
+				<nav id="toc" aria-label="On this page"></nav>
+			</div>
+
+			<div id="article">
+				<h2>Filter &amp; list</h2>
+				<div class="card">
+					<div class="card__head">
+						<h3>blog.posts(options)</h3>
+						<span class="endpoint">GET ./posts/default (or /summary)</span>
+					</div>
+					<div class="card__body">
+						<form id="posts-form">
+							<div class="controls">
+								<div class="field">
+									<label for="f-limit">limit</label>
+									<input type="number" id="f-limit" value="6" min="0" max="50" />
+								</div>
+								<div class="field">
+									<label for="f-page">page</label>
+									<input type="number" id="f-page" value="1" min="1" />
+								</div>
+								<div class="field">
+									<label for="f-orderby">orderBy</label>
+									<select id="f-orderby">
+										<option value="">(default)</option>
+										<option value="published">published</option>
+										<option value="updated">updated</option>
+									</select>
+								</div>
+								<div class="field checkfield">
+									<input type="checkbox" id="f-summary" />
+									<label for="f-summary">summary projection</label>
+								</div>
+								<div class="field col-span-2">
+									<label for="f-query">query (full-text)</label>
+									<input type="text" id="f-query" placeholder="e.g. template" />
+								</div>
+								<div class="field">
+									<label for="f-published-min">publishedMin</label>
+									<input type="date" id="f-published-min" />
+								</div>
+								<div class="field">
+									<label for="f-published-max">publishedMax</label>
+									<input type="date" id="f-published-max" />
+								</div>
+								<div class="field">
+									<label for="f-updated-min">updatedMin</label>
+									<input type="date" id="f-updated-min" />
+								</div>
+								<div class="field">
+									<label for="f-updated-max">updatedMax</label>
+									<input type="date" id="f-updated-max" />
+								</div>
+							</div>
+							<div class="field mb-3.5">
+								<label>label (multi-select — AND'd together)</label>
+								<div class="chips" id="label-chips"><span class="empty-box px-3 py-2">loading labels…</span></div>
+							</div>
+							<div class="actions-row">
+								<button class="btn btn-primary" type="submit">Run blog.posts()</button>
+								<button class="btn btn-ghost btn-sm" type="button" id="f-reset">Reset options</button>
+							</div>
+						</form>
+
+						<div class="status-line" id="posts-status"></div>
+						<pre class="code" id="posts-code"></pre>
+						<div id="posts-result"></div>
+						<div class="pager-controls" id="posts-pager"></div>
+					</div>
+				</div>
+
+				<h2>Single post lookup</h2>
+				<div class="card">
+					<div class="card__head">
+						<h3>blog.post(postId, options)</h3>
+						<span class="endpoint">GET ./posts/default/{postId}</span>
+					</div>
+					<div class="card__body">
+						<div class="controls">
+							<div class="field col-span-2">
+								<label for="post-id-input">postId</label>
+								<input type="text" id="post-id-input"
+									placeholder="paste an id from a card above, or click one" />
+							</div>
+							<div class="field checkfield">
+								<input type="checkbox" id="post-id-summary" />
+								<label for="post-id-summary">summary projection</label>
+							</div>
+						</div>
+						<div class="actions-row">
+							<button class="btn btn-primary btn-sm" id="post-id-run">Run blog.post()</button>
+						</div>
+						<div id="post-id-result"></div>
+					</div>
+				</div>
+
+				<h2>Convenience readers</h2>
+				<div class="grid-2">
+					<div class="card">
+						<div class="card__head">
+							<h3>blog.latest(limit)</h3>
+						</div>
+						<div class="card__body">
+							<div class="actions-row">
+								<input type="number" id="latest-limit" value="3" min="1" max="20"
+									class="w-[80px] p-2 rounded-sm border border-border bg-paper text-ink" />
+								<button class="btn btn-ghost btn-sm" id="latest-run">Run</button>
+							</div>
+							<div id="latest-out"></div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card__head">
+							<h3>blog.featured()</h3>
+						</div>
+						<div class="card__body">
+							<p class="text-[0.85rem] mt-0">Best-effort: no pin flag exists in the feed, so
+								this returns the first post in default order.</p>
+							<button class="btn btn-ghost btn-sm" id="featured-run">Run</button>
+							<div id="featured-out"></div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card__head">
+							<h3>blog.random(count)</h3>
+						</div>
+						<div class="card__body">
+							<div class="actions-row">
+								<input type="number" id="random-count" value="2" min="1" max="10"
+									class="w-[80px] p-2 rounded-sm border border-border bg-paper text-ink" />
+								<button class="btn btn-ghost btn-sm" id="random-run">Run</button>
+							</div>
+							<div id="random-out"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<footer class="site-footer">
+		<div id="site-footer"></div>
+	</footer>
+
+	<script src="https://unpkg.com/blogr-plugins/dist/blogr-plugins.min.js"></script>
+	<script src="../dist/blogr.min.js"></script>
+	<script src="assets/common.js"></script>
+	<script src="assets/posts.page.js"></script>
+</body>
+
+</html>

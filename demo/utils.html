@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Utilities · blogr demo</title>
+	<script src="assets/head.js"></script>
+	<link rel="stylesheet" href="assets/style.css" />
+</head>
+
+<body>
+	<header class="site-header">
+		<div id="site-header"></div>
+	</header>
+
+	<div class="layout">
+		<aside class="sidebar">
+			<nav id="site-sidebar"></nav>
+		</aside>
+
+		<main class="content">
+			<div class="page-head">
+				<span class="eyebrow">Toolkit</span>
+				<h1>Utilities</h1>
+				<p>URL resolution, feed parsing, and the HTML content helpers — all work on a raw string or a real
+					fetched <code>Post</code>.</p>
+			</div>
+
+			<div class="card">
+				<div class="card__head">
+					<h3>blog.resolve(url)</h3>
+					<span class="endpoint">resolves against the blog's own URL</span>
+				</div>
+				<div class="card__body">
+					<div class="actions-row">
+						<input type="text" id="resolve-input" value="/2020/02/show-post-views-in-blogger.html"
+							class="flex-1 min-w-[220px] px-3 py-[9px] rounded-sm border border-border bg-paper text-ink font-[inherit]" />
+						<button class="btn btn-primary btn-sm" id="resolve-run">Run</button>
+					</div>
+					<div id="resolve-result" class="mt-3"></div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card__head">
+					<h3>htmlToText · htmlToMarkdown · extractImages/Links/YouTube/Embeds · thumbnail</h3>
+					<span class="endpoint">all work on a Post or a raw HTML string</span>
+				</div>
+				<div class="card__body">
+					<div class="field">
+						<label for="html-input">HTML content</label>
+						<textarea id="html-input"></textarea>
+					</div>
+					<div class="actions-row">
+						<button class="btn btn-primary btn-sm" id="load-real-post">Load a real post's content</button>
+						<button class="btn btn-ghost btn-sm" id="run-all-extract">Run every function below</button>
+					</div>
+
+					<div class="divider"></div>
+					<div class="grid-2">
+						<div>
+							<h4>blog.htmlToText()</h4>
+							<pre class="code" id="out-text"></pre>
+						</div>
+						<div>
+							<h4>blog.htmlToMarkdown()</h4>
+							<pre class="code" id="out-markdown"></pre>
+						</div>
+					</div>
+					<div class="divider"></div>
+					<div class="grid-2">
+						<div>
+							<h4>blog.extractImages()</h4>
+							<pre class="code" id="out-images"></pre>
+						</div>
+						<div>
+							<h4>blog.extractLinks()</h4>
+							<pre class="code" id="out-links"></pre>
+						</div>
+					</div>
+					<div class="divider"></div>
+					<div class="grid-2">
+						<div>
+							<h4>blog.extractYouTube()</h4>
+							<pre class="code" id="out-youtube"></pre>
+						</div>
+						<div>
+							<h4>blog.extractEmbeds()</h4>
+							<pre class="code" id="out-embeds"></pre>
+						</div>
+					</div>
+					<div class="divider"></div>
+					<h4>blog.thumbnail()</h4>
+					<div id="out-thumbnail"></div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card__head">
+					<h3>blog.parse(raw) · blog.normalize(entry)</h3>
+					<span class="endpoint">turn raw Blogger JSON into typed objects</span>
+				</div>
+				<div class="card__body">
+					<div class="field">
+						<label for="raw-input">raw Blogger feed/entry JSON</label>
+						<textarea id="raw-input" class="min-h-[160px]"></textarea>
+					</div>
+					<div class="actions-row">
+						<button class="btn btn-primary btn-sm" id="load-raw">Load a real raw entry (blog.fetch)</button>
+						<button class="btn btn-ghost btn-sm" id="run-parse">Run blog.parse()</button>
+						<button class="btn btn-ghost btn-sm" id="run-normalize">Run blog.normalize()</button>
+					</div>
+					<div id="raw-result" class="mt-3"></div>
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<footer class="site-footer">
+		<div id="site-footer"></div>
+	</footer>
+
+	<script src="https://unpkg.com/blogr-plugins/dist/blogr-plugins.min.js"></script>
+	<script src="../dist/blogr.min.js"></script>
+	<script src="assets/common.js"></script>
+	<script src="assets/utils.page.js"></script>
+</body>
+
+</html>

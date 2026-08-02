@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Feed formats & URLs · blogr demo</title>
+	<script src="assets/head.js"></script>
+	<link rel="stylesheet" href="assets/style.css" />
+</head>
+
+<body>
+	<header class="site-header">
+		<div id="site-header"></div>
+	</header>
+
+	<div class="layout">
+		<aside class="sidebar">
+			<nav id="site-sidebar"></nav>
+		</aside>
+
+		<main class="content">
+			<div class="page-head">
+				<span class="eyebrow">Feeds</span>
+				<h1>Feed formats &amp; raw URLs</h1>
+				<p>Every wire format Blogger serves — <code>json</code>, <code>atom</code>, <code>rss</code>,
+					<code>jsonp</code> — plus <code>url.*</code> for building feed URLs without making a request.
+				</p>
+			</div>
+
+			<div class="card">
+				<div class="card__head">
+					<h3>blog.feed.json({ type, summary, limit })</h3>
+					<span class="endpoint">parsed</span>
+				</div>
+				<div class="card__body">
+					<div class="controls">
+						<div class="field"><label for="feed-type">type</label>
+							<select id="feed-type">
+								<option value="posts">posts</option>
+								<option value="pages">pages</option>
+								<option value="comments">comments</option>
+							</select>
+						</div>
+						<div class="field"><label for="feed-limit">limit</label><input type="number" id="feed-limit"
+								value="3" min="0" max="20" /></div>
+						<div class="field checkfield"><input type="checkbox" id="feed-summary" /><label
+								for="feed-summary">summary</label></div>
+					</div>
+					<div class="actions-row">
+						<button class="btn btn-primary btn-sm" id="feed-json-run">Run .json()</button>
+						<button class="btn btn-ghost btn-sm" id="feed-atom-run">Run .atom()</button>
+						<button class="btn btn-ghost btn-sm" id="feed-rss-run">Run .rss()</button>
+						<button class="btn btn-ghost btn-sm" id="feed-jsonp-run">Run .jsonp()</button>
+					</div>
+					<div class="status-line" id="feed-status"></div>
+					<div id="feed-result"></div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card__head">
+					<h3>blog.url.*</h3>
+					<span class="endpoint">no request made — pure URL builders</span>
+				</div>
+				<div class="card__body">
+					<div class="controls">
+						<div class="field"><label for="url-kind">builder</label>
+							<select id="url-kind">
+								<option value="posts">url.posts()</option>
+								<option value="pages">url.pages()</option>
+								<option value="comments">url.comments()</option>
+								<option value="post">url.post(postId)</option>
+								<option value="page">url.page(pageId)</option>
+								<option value="comments-scoped">url.comments(postId)</option>
+							</select>
+						</div>
+						<div class="field"><label for="url-id">postId / pageId</label><input type="text" id="url-id"
+								placeholder="only needed for scoped builders" /></div>
+						<div class="field"><label for="url-format">format</label>
+							<select id="url-format">
+								<option value="json">json</option>
+								<option value="atom">atom</option>
+								<option value="rss">rss</option>
+								<option value="jsonp">jsonp</option>
+							</select>
+						</div>
+					</div>
+					<div class="actions-row"><button class="btn btn-primary btn-sm" id="url-run">Build URL</button>
+					</div>
+					<pre class="code" id="url-code"></pre>
+					<div id="url-result"></div>
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<footer class="site-footer">
+		<div id="site-footer"></div>
+	</footer>
+
+	<script src="https://unpkg.com/blogr-plugins/dist/blogr-plugins.min.js"></script>
+	<script src="../dist/blogr.min.js"></script>
+	<script src="assets/common.js"></script>
+	<script src="assets/feed-urls.page.js"></script>
+</body>
+
+</html>

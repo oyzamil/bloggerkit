@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Search · blogr demo</title>
+	<script src="assets/head.js"></script>
+	<link rel="stylesheet" href="assets/style.css" />
+</head>
+
+<body>
+	<header class="site-header">
+		<div id="site-header"></div>
+	</header>
+
+	<div class="layout">
+		<aside class="sidebar">
+			<nav id="site-sidebar"></nav>
+		</aside>
+
+		<main class="content">
+			<div class="page-head">
+				<span class="eyebrow">Content</span>
+				<h1>Search</h1>
+				<p><code>blog.search()</code> accepts a plain query string, or a full options object — it's a thin
+					wrapper over <code>posts({ query, ... })</code>.</p>
+			</div>
+
+			<div class="card">
+				<div class="card__head">
+					<h3>blog.search("query")</h3>
+					<span class="endpoint">string form</span>
+				</div>
+				<div class="card__body">
+					<form id="string-form" class="actions-row">
+						<input type="text" id="string-query" placeholder="template, css, android…"
+							class="flex-1 min-w-[200px] px-3 py-[9px] rounded-sm border border-border bg-paper text-ink font-[inherit]" />
+						<button class="btn btn-primary btn-sm" type="submit">Run</button>
+					</form>
+					<div class="status-line" id="string-status"></div>
+					<div id="string-result"></div>
+					<div class="pager-controls" id="string-pager"></div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card__head">
+					<h3>blog.search({ query, label, limit, orderBy, ... })</h3>
+					<span class="endpoint">object form</span>
+				</div>
+				<div class="card__body">
+					<form id="object-form">
+						<div class="controls">
+							<div class="field">
+								<label for="o-query">query</label>
+								<input type="text" id="o-query" placeholder="required" />
+							</div>
+							<div class="field">
+								<label for="o-label">label</label>
+								<select id="o-label">
+									<option value="">(any)</option>
+								</select>
+							</div>
+							<div class="field">
+								<label for="o-limit">limit</label>
+								<input type="number" id="o-limit" value="6" min="0" max="50" />
+							</div>
+							<div class="field">
+								<label for="o-orderby">orderBy</label>
+								<select id="o-orderby">
+									<option value="">(default)</option>
+									<option value="published">published</option>
+									<option value="updated">updated</option>
+								</select>
+							</div>
+							<div class="field">
+								<label for="o-page">page</label>
+								<input type="number" id="o-page" value="1" min="1" />
+							</div>
+							<div class="field checkfield">
+								<input type="checkbox" id="o-summary" />
+								<label for="o-summary">summary</label>
+							</div>
+						</div>
+						<div class="actions-row">
+							<button class="btn btn-primary" type="submit">Run blog.search(options)</button>
+						</div>
+					</form>
+					<div class="status-line" id="object-status"></div>
+					<pre class="code" id="object-code"></pre>
+					<div id="object-result"></div>
+					<div class="pager-controls" id="object-pager"></div>
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<footer class="site-footer">
+		<div id="site-footer"></div>
+	</footer>
+
+	<script src="https://unpkg.com/blogr-plugins/dist/blogr-plugins.min.js"></script>
+	<script src="../dist/blogr.min.js"></script>
+	<script src="assets/common.js"></script>
+	<script src="assets/search.page.js"></script>
+</body>
+
+</html>

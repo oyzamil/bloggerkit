@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>blogr — SDK demo · softwebtuts.blogspot.com</title>
+	<script src="assets/head.js"></script>
+	<link rel="stylesheet" href="assets/style.css" />
+</head>
+
+<body>
+	<header class="site-header">
+		<div id="site-header"></div>
+	</header>
+
+	<section class="shell hero">
+		<span class="eyebrow">Live demo · every function, one real blog</span>
+		<h1>blogr talks to a real Blogspot blog, right here in your browser.</h1>
+		<p class="lede">
+			This whole site is static HTML calling the <code>blogr</code> SDK directly against
+			<strong>softwebtuts.blogspot.com</strong> — no backend, no proxy. Every page below
+			exercises a different slice of the library, with every option exposed as a control.
+		</p>
+		<div class="hero-actions">
+			<a class="btn btn-primary" href="posts.html">Browse posts →</a>
+			<a class="btn btn-ghost" href="advanced.html">See the plugin system</a>
+		</div>
+
+		<!-- biome-ignore lint/a11y/useAriaPropsSupportedByRole: Expected -->
+		<div class="ticker" aria-label="Live feed ticker">
+			<div class="ticker__head"><span class="live-dot"></span>GET ./posts/summary — live titles</div>
+			<div class="ticker__track" id="ticker-track">
+				<span>connecting to feed…</span>
+			</div>
+		</div>
+	</section>
+
+	<div class="layout">
+		<aside class="sidebar">
+			<nav id="site-sidebar"></nav>
+		</aside>
+
+		<main class="content">
+			<div class="card" id="card-info">
+				<div class="card__head">
+					<h3>Blog info, stats &amp; links</h3>
+					<span class="endpoint">blog.info() · blog.stats() · blog.links() · blog.authors()</span>
+				</div>
+				<div class="card__body">
+					<div class="status-line is-loading" id="info-status"><span class="dot"></span>fetching…</div>
+					<div id="info-body"></div>
+				</div>
+			</div>
+
+			<div class="card" id="card-latest">
+				<div class="card__head">
+					<h3>Latest posts</h3>
+					<span class="endpoint">blog.latest(limit)</span>
+				</div>
+				<div class="card__desc">The most recent posts, newest first — a thin convenience over
+					<code>blog.posts({ orderBy: "published" })</code>.
+				</div>
+				<div class="card__body">
+					<div class="status-line is-loading" id="latest-status"><span class="dot"></span>fetching…</div>
+					<div id="latest-body"></div>
+				</div>
+			</div>
+
+			<div class="card" id="card-search">
+				<div class="card__head">
+					<h3>Quick search</h3>
+					<span class="endpoint">blog.search(query)</span>
+				</div>
+				<div class="card__body">
+					<form id="quick-search-form" class="actions-row !mt-0 !mb-3">
+						<input type="search" id="quick-search-input" placeholder="react, css, blogger template…"
+							class="flex-1 min-w-[180px] px-3 py-[9px] rounded-sm border border-border bg-paper text-ink font-[inherit]" />
+						<button class="btn btn-primary btn-sm" type="submit">Search</button>
+					</form>
+					<div id="quick-search-body"></div>
+				</div>
+			</div>
+
+			<h2 class="mt-9">Explore every corner of the SDK</h2>
+			<div class="post-grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))]" id="explore-grid">
+			</div>
+		</main>
+	</div>
+
+	<footer class="site-footer">
+		<div id="site-footer"></div>
+	</footer>
+
+	<script src="https://unpkg.com/blogr-plugins/dist/blogr-plugins.min.js"></script>
+	<script src="../dist/blogr.min.js"></script>
+	<script src="assets/common.js"></script>
+	<script src="assets/index.page.js"></script>
+</body>
+
+</html>

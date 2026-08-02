@@ -1,22 +1,69 @@
 {
 	"name": "blogr",
-	"version": "0.0.0-alpha",
-	"description": "A library for Blogger Developers.",
-	"type": "module",
+	"version": "0.0.1",
+	"description": "A modern, modular, fully-typed SDK for the Blogger (Blogspot) public feed API.",
 	"keywords": [
-		"blogspot",
 		"blogger",
+		"blogspot",
 		"blogger-api",
 		"blogger-feed",
-		"blogger-widgets"
+		"sdk"
 	],
-	"license": "MIT",
 	"homepage": "https://github.com/oyzamil/blogr#readme",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/oyzamil/blogr.git"
 	},
+	"license": "MIT",
+	"type": "module",
+	"main": "./dist/blogr.cjs",
+	"module": "./dist/blogr.esm.js",
+	"types": "./dist/blogr.d.ts",
+	"unpkg": "./dist/blogr.min.js",
+	"jsdelivr": "./dist/blogr.min.js",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/blogr.d.ts",
+				"default": "./dist/blogr.esm.js"
+			},
+			"require": {
+				"types": "./dist/blogr.d.cts",
+				"default": "./dist/blogr.cjs"
+			}
+		},
+		"./package.json": "./package.json"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"docs": "typedoc",
+		"build": "tsdown",
+		"dev": "tsdown --watch",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"typecheck": "tsc --noEmit",
+		"prepublishOnly": "bun run build && bun run test",
+		"format": "biome format --write ./src",
+		"git": "bun run ./scripts/git-helper.ts add-git"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.5.6",
+		"tsdown": "^0.22.14",
+		"typedoc": "^0.28.20",
+		"typedoc-plugin-markdown": "^4.12.0",
+		"unrun": "^0.3.1",
+		"vitest": "^4.1.10"
+	},
+	"engines": {
+		"node": ">=18"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
 	"dependencies": {
-		"blogr": "."
+		"@types/node": "^26.1.2",
+		"typescript": "6.0.3"
 	}
 }

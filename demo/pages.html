@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Pages · blogr demo</title>
+	<script src="assets/head.js"></script>
+	<link rel="stylesheet" href="assets/style.css" />
+</head>
+
+<body>
+	<header class="site-header">
+		<div id="site-header"></div>
+	</header>
+
+	<div class="layout">
+		<aside class="sidebar">
+			<nav id="site-sidebar"></nav>
+		</aside>
+
+		<main class="content">
+			<div class="page-head">
+				<span class="eyebrow">Content</span>
+				<h1>Pages</h1>
+				<p>Static blog pages (About, Contact, Privacy…) — the same shape as posts, without labels or comments.
+				</p>
+			</div>
+
+			<div class="card">
+				<div class="card__head">
+					<h3>blog.pages(options)</h3>
+					<span class="endpoint">GET ./pages/default (or /summary)</span>
+				</div>
+				<div class="card__body">
+					<form id="pages-form">
+						<div class="controls">
+							<div class="field">
+								<label for="p-limit">limit</label>
+								<input type="number" id="p-limit" value="10" min="0" max="50" />
+							</div>
+							<div class="field">
+								<label for="p-page">page</label>
+								<input type="number" id="p-page" value="1" min="1" />
+							</div>
+							<div class="field">
+								<label for="p-orderby">orderBy</label>
+								<select id="p-orderby">
+									<option value="">(default)</option>
+									<option value="published">published</option>
+									<option value="updated">updated</option>
+								</select>
+							</div>
+							<div class="field checkfield">
+								<input type="checkbox" id="p-summary" />
+								<label for="p-summary">summary projection</label>
+							</div>
+						</div>
+						<div class="actions-row">
+							<button class="btn btn-primary" type="submit">Run blog.pages()</button>
+						</div>
+					</form>
+					<div class="status-line" id="pages-status"></div>
+					<pre class="code" id="pages-code"></pre>
+					<div id="pages-result"></div>
+					<div class="pager-controls" id="pages-pager"></div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card__head">
+					<h3>blog.page(pageId, options)</h3>
+					<span class="endpoint">GET ./pages/default/{pageId}</span>
+				</div>
+				<div class="card__body">
+					<div class="controls">
+						<div class="field col-span-2">
+							<label for="page-id-input">pageId</label>
+							<input type="text" id="page-id-input" placeholder="click a page above, or paste an id" />
+						</div>
+						<div class="field checkfield">
+							<input type="checkbox" id="page-id-summary" />
+							<label for="page-id-summary">summary projection</label>
+						</div>
+					</div>
+					<div class="actions-row">
+						<button class="btn btn-primary btn-sm" id="page-id-run">Run blog.page()</button>
+					</div>
+					<div id="page-id-result"></div>
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<footer class="site-footer">
+		<div id="site-footer"></div>
+	</footer>
+
+	<script src="https://unpkg.com/blogr-plugins/dist/blogr-plugins.min.js"></script>
+	<script src="../dist/blogr.min.js"></script>
+	<script src="assets/common.js"></script>
+	<script src="assets/pages.page.js"></script>
+</body>
+
+</html>
