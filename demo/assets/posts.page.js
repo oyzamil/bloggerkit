@@ -69,8 +69,8 @@
 		container.innerHTML = items.length
 			? `<div class="post-grid">${items.map(postCardWithId).join("")}</div>`
 			: emptyBox("No posts matched these options.");
-		if (window.BlogrPlugins)
-			window.BlogrPlugins.lazify(container.querySelectorAll("img[data-src]"));
+		if (BlogrPlugins)
+			BlogrPlugins.lazify(container.querySelectorAll("img[data-src]"));
 		container.querySelectorAll(".post-card").forEach((card) => {
 			card.addEventListener("click", () => {
 				el("post-id-input").value = card.dataset.postId;

@@ -6,7 +6,7 @@
 
 # Class: SearchModule
 
-Defined in: src/modules/search.ts:8
+Defined in: [src/modules/search.ts:8](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/search.ts#L8)
 
 Full-text search across posts.
 
@@ -16,7 +16,7 @@ Full-text search across posts.
 
 > **new SearchModule**(`posts`): `SearchModule`
 
-Defined in: src/modules/search.ts:9
+Defined in: [src/modules/search.ts:9](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/search.ts#L9)
 
 #### Parameters
 
@@ -34,7 +34,7 @@ Defined in: src/modules/search.ts:9
 
 > **run**(`input`, `requestOptions?`): `Promise`\<[`Pager`](../interfaces/Pager.md)\<[`Post`](../interfaces/Post.md)\>\>
 
-Defined in: src/modules/search.ts:12
+Defined in: [src/modules/search.ts:12](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/search.ts#L12)
 
 Searches posts by a plain query string, or a [SearchOptions](../interfaces/SearchOptions.md) object.
 
@@ -46,7 +46,7 @@ Searches posts by a plain query string, or a [SearchOptions](../interfaces/Searc
 
 ##### requestOptions?
 
-`RequestOptions` = `{}`
+[`RequestOptionsInterface`](../interfaces/RequestOptionsInterface.md) = `{}`
 
 #### Returns
 

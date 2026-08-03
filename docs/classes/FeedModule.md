@@ -6,7 +6,7 @@
 
 # Class: FeedModule
 
-Defined in: src/modules/feed.ts:18
+Defined in: [src/modules/feed.ts:18](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/feed.ts#L18)
 
 Fetches the blog's feed in any of Blogger's supported wire formats.
 
@@ -16,7 +16,7 @@ Fetches the blog's feed in any of Blogger's supported wire formats.
 
 > **new FeedModule**(`client`): `FeedModule`
 
-Defined in: src/modules/feed.ts:19
+Defined in: [src/modules/feed.ts:19](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/feed.ts#L19)
 
 #### Parameters
 
@@ -34,7 +34,7 @@ Defined in: src/modules/feed.ts:19
 
 > **atom**(`options?`, `requestOptions?`): `Promise`\<`string`\>
 
-Defined in: src/modules/feed.ts:34
+Defined in: [src/modules/feed.ts:34](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/feed.ts#L34)
 
 Fetches the feed as raw Atom XML text.
 
@@ -46,7 +46,7 @@ Fetches the feed as raw Atom XML text.
 
 ##### requestOptions?
 
-`RequestOptions` = `{}`
+[`RequestOptionsInterface`](../interfaces/RequestOptionsInterface.md) = `{}`
 
 #### Returns
 
@@ -58,7 +58,7 @@ Fetches the feed as raw Atom XML text.
 
 > **json**(`options?`, `requestOptions?`): `Promise`\<[`ParsedFeed`](../interfaces/ParsedFeed.md)\>
 
-Defined in: src/modules/feed.ts:22
+Defined in: [src/modules/feed.ts:22](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/feed.ts#L22)
 
 Fetches and parses the feed as JSON (default transport).
 
@@ -70,7 +70,7 @@ Fetches and parses the feed as JSON (default transport).
 
 ##### requestOptions?
 
-`RequestOptions` = `{}`
+[`RequestOptionsInterface`](../interfaces/RequestOptionsInterface.md) = `{}`
 
 #### Returns
 
@@ -82,7 +82,7 @@ Fetches and parses the feed as JSON (default transport).
 
 > **jsonp**(`options?`, `requestOptions?`): `Promise`\<[`ParsedFeed`](../interfaces/ParsedFeed.md)\>
 
-Defined in: src/modules/feed.ts:56
+Defined in: [src/modules/feed.ts:56](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/feed.ts#L56)
 
 Fetches and parses the feed over JSONP (browser-only; requires `jsonp: true`).
 
@@ -94,7 +94,7 @@ Fetches and parses the feed over JSONP (browser-only; requires `jsonp: true`).
 
 ##### requestOptions?
 
-`RequestOptions` = `{}`
+[`RequestOptionsInterface`](../interfaces/RequestOptionsInterface.md) = `{}`
 
 #### Returns
 
@@ -106,7 +106,7 @@ Fetches and parses the feed over JSONP (browser-only; requires `jsonp: true`).
 
 > **rss**(`options?`, `requestOptions?`): `Promise`\<`string`\>
 
-Defined in: src/modules/feed.ts:45
+Defined in: [src/modules/feed.ts:45](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/feed.ts#L45)
 
 Fetches the feed as raw RSS 2.0 XML text.
 
@@ -118,7 +118,7 @@ Fetches the feed as raw RSS 2.0 XML text.
 
 ##### requestOptions?
 
-`RequestOptions` = `{}`
+[`RequestOptionsInterface`](../interfaces/RequestOptionsInterface.md) = `{}`
 
 #### Returns
 

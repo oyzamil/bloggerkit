@@ -4,7 +4,7 @@ export type {
 	BloggerEventName,
 	Listener,
 } from "./core/events";
-export type { FeedFormat } from "./core/http";
+export type { buildUrl, FeedFormat, QueryOptions } from "./core/http";
 export type { FeedOptions } from "./modules/feed";
 export type { BlogStats } from "./modules/stats";
 export type { UrlOptions } from "./modules/url";
@@ -16,6 +16,7 @@ export type {
 export type { BloggerPlugin } from "./plugins";
 export type * from "./types/feed";
 export type * from "./types/options"; // includes LatestOptions, RandomOptions
+export type { RequestOptions as RequestOptionsInterface } from "./types/options";
 
 export { Blogr, Blogr as default } from "./blogger";
 export { Cache } from "./core/cache";

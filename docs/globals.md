@@ -47,7 +47,9 @@
 - [Post](interfaces/Post.md)
 - [PostCommentInfo](interfaces/PostCommentInfo.md)
 - [PostsListOptions](interfaces/PostsListOptions.md)
+- [QueryOptions](interfaces/QueryOptions.md)
 - [RequestOptions](interfaces/RequestOptions.md)
+- [RequestOptionsInterface](interfaces/RequestOptionsInterface.md)
 - [SearchOptions](interfaces/SearchOptions.md)
 - [UrlOptions](interfaces/UrlOptions.md)
 
@@ -55,6 +57,7 @@
 
 - [BloggerEventName](type-aliases/BloggerEventName.md)
 - [BloggerPlugin](type-aliases/BloggerPlugin.md)
+- [buildUrl](type-aliases/buildUrl.md)
 - [FeedFormat](type-aliases/FeedFormat.md)
 - [LatestOptions](type-aliases/LatestOptions.md)
 - [Listener](type-aliases/Listener.md)

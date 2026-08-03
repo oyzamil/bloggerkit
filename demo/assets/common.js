@@ -221,7 +221,7 @@ function highlightCode(code) {
 			'<span class="tok-str">$1</span>',
 		)
 		.replace(
-			/\b(blog|Blogger|BloggerImage)\.([a-zA-Z]+)/g,
+			/\b(blog|Blogge)\.([a-zA-Z]+)/g,
 			'<span class="tok-key">$1</span>.<span class="tok-fn">$2</span>',
 		);
 }
@@ -274,6 +274,7 @@ function postCardInnerHtml(post) {
 				.slice(0, 3)
 				.map((l) => `<span>${escapeHtml(l)}</span>`)
 				.join("")}</div>
+			<p>${escapeHtml(post.content)}</P>
 		</div>`;
 }
 

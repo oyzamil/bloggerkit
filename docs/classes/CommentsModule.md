@@ -6,7 +6,7 @@
 
 # Class: CommentsModule
 
-Defined in: src/modules/comments.ts:14
+Defined in: [src/modules/comments.ts:14](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/comments.ts#L14)
 
 Methods for listing and fetching comments.
 
@@ -16,7 +16,7 @@ Methods for listing and fetching comments.
 
 > **new CommentsModule**(`client`): `CommentsModule`
 
-Defined in: src/modules/comments.ts:15
+Defined in: [src/modules/comments.ts:15](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/comments.ts#L15)
 
 #### Parameters
 
@@ -34,7 +34,7 @@ Defined in: src/modules/comments.ts:15
 
 > **get**(`commentId`, `postId?`, `options?`, `requestOptions?`): `Promise`\<[`Comment`](../interfaces/Comment.md) \| `null`\>
 
-Defined in: src/modules/comments.ts:48
+Defined in: [src/modules/comments.ts:48](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/comments.ts#L48)
 
 Fetches a single comment by id.
 
@@ -65,7 +65,7 @@ lookup — prefer passing `postId` when you have it.
 
 ##### requestOptions?
 
-`RequestOptions` = `{}`
+[`RequestOptionsInterface`](../interfaces/RequestOptionsInterface.md) = `{}`
 
 #### Returns
 
@@ -77,7 +77,7 @@ lookup — prefer passing `postId` when you have it.
 
 > **list**(`options?`, `requestOptions?`): `Promise`\<[`Pager`](../interfaces/Pager.md)\<[`Comment`](../interfaces/Comment.md)\>\>
 
-Defined in: src/modules/comments.ts:18
+Defined in: [src/modules/comments.ts:18](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/comments.ts#L18)
 
 Lists comments for the whole blog, or for a single post when `options.postId` is set.
 
@@ -89,7 +89,7 @@ Lists comments for the whole blog, or for a single post when `options.postId` is
 
 ##### requestOptions?
 
-`RequestOptions` = `{}`
+[`RequestOptionsInterface`](../interfaces/RequestOptionsInterface.md) = `{}`
 
 #### Returns
 

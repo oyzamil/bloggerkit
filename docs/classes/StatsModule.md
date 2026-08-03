@@ -6,7 +6,7 @@
 
 # Class: StatsModule
 
-Defined in: src/modules/stats.ts:12
+Defined in: [src/modules/stats.ts:12](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/stats.ts#L12)
 
 Cheap aggregate counts for the blog (posts/pages/comments/labels totals).
 
@@ -16,7 +16,7 @@ Cheap aggregate counts for the blog (posts/pages/comments/labels totals).
 
 > **new StatsModule**(`client`): `StatsModule`
 
-Defined in: src/modules/stats.ts:13
+Defined in: [src/modules/stats.ts:13](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/stats.ts#L13)
 
 #### Parameters
 
@@ -34,13 +34,13 @@ Defined in: src/modules/stats.ts:13
 
 > **get**(`requestOptions?`): `Promise`\<[`BlogStats`](../interfaces/BlogStats.md)\>
 
-Defined in: src/modules/stats.ts:15
+Defined in: [src/modules/stats.ts:15](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/stats.ts#L15)
 
 #### Parameters
 
 ##### requestOptions?
 
-`RequestOptions` = `{}`
+[`RequestOptionsInterface`](../interfaces/RequestOptionsInterface.md) = `{}`
 
 #### Returns
 

@@ -58,7 +58,7 @@ over `file://`. If your browser is picky about `fetch()` from `file://`
 | `search.html` | `search(string)`, `search(object)` |
 | `archive.html` | `archive.years()`, `archive.year()`, `archive.month()` |
 | `comments.html` | `comments()`, `comments(postId)`, `comment(id, postId?)` |
-| `images.html` | `images()`, `image()` → `BloggerImage` (every transform option), vs. `resizeImage()` |
+| `images.html` | `images()`, `resizeImage()` |
 | `feed-urls.html` | `feed.json/atom/rss/jsonp()`, `url.*` |
 | `utils.html` | `resolve()`, `parse()`, `normalize()`, `htmlToText/Markdown()`, `extract*()`, `thumbnail()` |
 | `advanced.html` | `request()`, `fetch()`, `use()`, `on()/off()`, `cache.*`, plus a tour of every `blogr-plugins` helper |

@@ -6,7 +6,7 @@
 
 # Class: AuthorsModule
 
-Defined in: src/modules/authors.ts:10
+Defined in: [src/modules/authors.ts:10](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/authors.ts#L10)
 
 Lists distinct post authors. Blogger's feed API has no dedicated authors
 endpoint, so this aggregates authors seen across up to `sampleSize`
@@ -18,7 +18,7 @@ endpoint, so this aggregates authors seen across up to `sampleSize`
 
 > **new AuthorsModule**(`posts`): `AuthorsModule`
 
-Defined in: src/modules/authors.ts:11
+Defined in: [src/modules/authors.ts:11](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/authors.ts#L11)
 
 #### Parameters
 
@@ -36,7 +36,7 @@ Defined in: src/modules/authors.ts:11
 
 > **list**(`options?`, `requestOptions?`): `Promise`\<[`Author`](../interfaces/Author.md)[]\>
 
-Defined in: src/modules/authors.ts:13
+Defined in: [src/modules/authors.ts:13](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/authors.ts#L13)
 
 #### Parameters
 
@@ -48,7 +48,7 @@ Defined in: src/modules/authors.ts:13
 
 ##### requestOptions?
 
-`RequestOptions` = `{}`
+[`RequestOptionsInterface`](../interfaces/RequestOptionsInterface.md) = `{}`
 
 #### Returns
 

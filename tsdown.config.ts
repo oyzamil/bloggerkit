@@ -1,74 +1,90 @@
 import { readFileSync } from "node:fs";
+import type { OutputOptions } from "rolldown";
 import { defineConfig, type UserConfig } from "tsdown";
 
 const pkg = JSON.parse(
 	readFileSync(new URL("./package.json", import.meta.url), "utf8"),
 );
 
-const shared: UserConfig = {
-	sourcemap: !true,
-	target: "es2022",
-	outputOptions(options, format) {
-		options.banner = `/* blogr v${pkg.version} - ${format} | MIT License */`;
-		options.exports = format === "iife" ? "default" : "named";
-		return options;
-	},
+const BANNER = (format: string) =>
+	`/*! ${pkg.name} v${pkg.version} - ${format} | M.Muzammil <https://muzammil.work/> | MIT License */`;
+
+const applyOutputOptions = (
+	options: OutputOptions,
+	format: string,
+	isLibrary = false,
+) => {
+	options.banner = BANNER(format);
+
+	options.comments = {
+		legal: true,
+	};
+
+	if (isLibrary) {
+		options.exports = "named";
+	}
+
+	return options;
 };
 
+const shared: UserConfig = {
+	sourcemap: false,
+	target: "es2020",
+};
+
+const packageBuild = (minify: boolean): UserConfig => ({
+	...shared,
+	entry: {
+		[pkg.name]: "src/index.ts",
+	},
+	format: ["esm", "cjs"],
+	dts: !minify,
+	clean: !minify,
+	minify,
+	outputOptions(options, format) {
+		return applyOutputOptions(options, format, true);
+	},
+	outExtensions({ format }) {
+		return {
+			js: minify
+				? format === "es"
+					? ".esm.min.js"
+					: ".min.cjs"
+				: format === "es"
+					? ".esm.js"
+					: ".cjs",
+			...(minify
+				? {}
+				: {
+						dts: format === "es" ? ".ts" : ".cts",
+					}),
+		};
+	},
+});
+
+const browserBuild = (minify: boolean): UserConfig => ({
+	...shared,
+	entry: {
+		[pkg.name]: "src/browser.ts",
+	},
+	format: ["iife"],
+	globalName: "Blogr",
+	dts: false,
+	clean: false,
+	minify,
+	outputOptions(options, format) {
+		applyOutputOptions(options, format, false);
+
+		options.entryFileNames = minify ? "[name].min.js" : "[name].js";
+		options.exports = "default";
+
+		return options;
+	},
+});
+
 export default defineConfig([
-	{
-		...shared,
-		entry: { blogr: "src/index.ts" },
-		format: ["esm", "cjs"],
-		dts: true,
-		clean: true,
-		minify: false,
-		outExtensions({ format }) {
-			return {
-				js: format === "es" ? ".esm.js" : ".cjs",
-				dts: format === "es" ? ".ts" : ".cts",
-			};
-		},
-	},
-	{
-		...shared,
-		entry: { blogr: "src/index.ts" },
-		format: ["esm", "cjs"],
-		dts: false,
-		clean: false,
-		minify: true,
-		outExtensions({ format }) {
-			return { js: format === "es" ? ".esm.min.js" : ".min.cjs" };
-		},
-	},
-	{
-		...shared,
-		entry: { blogr: "src/browser.ts" },
-		format: ["iife"],
-		globalName: "Blogr",
-		dts: false,
-		clean: false,
-		minify: false,
-		outputOptions(options, format) {
-			options.banner = `/* blogr v${pkg.version} - ${format} | MIT License */`;
-			options.exports = "default";
-			options.entryFileNames = "blogr.js";
-			return options;
-		},
-	},
-	{
-		...shared,
-		entry: { blogr: "src/browser.ts" },
-		format: ["iife"],
-		globalName: "Blogr",
-		dts: false,
-		clean: false,
-		minify: true,
-		outputOptions(options, format) {
-			options.banner = `/* blogr v${pkg.version} - ${format} | MIT License */`;
-			options.exports = "default";
-			options.entryFileNames = "blogr.min.js";
-			return options;
-		},
-	},
+	packageBuild(false),
+	packageBuild(true),
+	browserBuild(false),
+	browserBuild(true),
 ]);

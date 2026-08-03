@@ -1,4 +1,7 @@
-/** Common request-level controls, available on every method. */
+/**
+ * Common request-level controls, available on every method.
+ * @public
+ */
 export interface RequestOptions {
 	/** Abort the underlying `fetch` call. */
 	signal?: AbortSignal;

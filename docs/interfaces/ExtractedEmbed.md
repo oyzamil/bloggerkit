@@ -6,7 +6,7 @@
 
 # Interface: ExtractedEmbed
 
-Defined in: src/parser/html.ts:182
+Defined in: [src/parser/html.ts:199](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/parser/html.ts#L199)
 
 A generic (non-YouTube) `<iframe>` embed found in a post.
 
@@ -16,7 +16,7 @@ A generic (non-YouTube) `<iframe>` embed found in a post.
 
 > **provider**: `string`
 
-Defined in: src/parser/html.ts:184
+Defined in: [src/parser/html.ts:201](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/parser/html.ts#L201)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: src/parser/html.ts:184
 
 > **src**: `string`
 
-Defined in: src/parser/html.ts:183
+Defined in: [src/parser/html.ts:200](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/parser/html.ts#L200)

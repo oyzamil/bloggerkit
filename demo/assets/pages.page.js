@@ -32,6 +32,9 @@
 				runPageLookup();
 			});
 		});
+
+		if (BlogrPlugins)
+			BlogrPlugins.lazify(container.querySelectorAll("img[data-src]"));
 	}
 
 	function renderPage(pager) {

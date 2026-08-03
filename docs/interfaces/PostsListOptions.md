@@ -6,7 +6,7 @@
 
 # Interface: PostsListOptions
 
-Defined in: src/types/options.ts:33
+Defined in: [src/types/options.ts:36](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/types/options.ts#L36)
 
 Options for [PostsModule.list](../classes/PostsModule.md#list).
 
@@ -20,7 +20,7 @@ Options for [PostsModule.list](../classes/PostsModule.md#list).
 
 > `optional` **label?**: `string` \| `string`[]
 
-Defined in: src/types/options.ts:43
+Defined in: [src/types/options.ts:46](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/types/options.ts#L46)
 
 Filter by one or more labels.
 
@@ -34,7 +34,7 @@ Filter by one or more labels.
 
 > `optional` **limit?**: `number`
 
-Defined in: src/types/options.ts:15
+Defined in: [src/types/options.ts:18](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/types/options.ts#L18)
 
 Alias for Blogger's `max-results`.
 
@@ -54,7 +54,7 @@ Alias for Blogger's `max-results`.
 
 > `optional` **orderBy?**: `"updated"` \| `"published"`
 
-Defined in: src/types/options.ts:19
+Defined in: [src/types/options.ts:22](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/types/options.ts#L22)
 
 Sort field.
 
@@ -68,7 +68,7 @@ Sort field.
 
 > `optional` **page?**: `number`
 
-Defined in: src/types/options.ts:13
+Defined in: [src/types/options.ts:16](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/types/options.ts#L16)
 
 Page number (1-based). Converted internally to `startIndex` using
 `limit`. Ignored if `startIndex` is also provided.
@@ -83,7 +83,7 @@ Page number (1-based). Converted internally to `startIndex` using
 
 > `optional` **publishedMax?**: `string` \| `Date`
 
-Defined in: src/types/options.ts:23
+Defined in: [src/types/options.ts:26](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/types/options.ts#L26)
 
 Only include entries published on/before this date.
 
@@ -97,7 +97,7 @@ Only include entries published on/before this date.
 
 > `optional` **publishedMin?**: `string` \| `Date`
 
-Defined in: src/types/options.ts:21
+Defined in: [src/types/options.ts:24](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/types/options.ts#L24)
 
 Only include entries published on/after this date.
 
@@ -111,7 +111,7 @@ Only include entries published on/after this date.
 
 > `optional` **query?**: `string`
 
-Defined in: src/types/options.ts:35
+Defined in: [src/types/options.ts:38](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/types/options.ts#L38)
 
 Full-text search query (maps to Blogger's `q` param).
 
@@ -121,7 +121,7 @@ Full-text search query (maps to Blogger's `q` param).
 
 > `optional` **startIndex?**: `number`
 
-Defined in: src/types/options.ts:17
+Defined in: [src/types/options.ts:20](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/types/options.ts#L20)
 
 Raw 1-based start index, takes precedence over `page`.
 
@@ -135,7 +135,7 @@ Raw 1-based start index, takes precedence over `page`.
 
 > `optional` **summary?**: `boolean`
 
-Defined in: src/types/options.ts:29
+Defined in: [src/types/options.ts:32](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/types/options.ts#L32)
 
 When `true`, requests the lightweight "summary" projection.
 
@@ -149,7 +149,7 @@ When `true`, requests the lightweight "summary" projection.
 
 > `optional` **updatedMax?**: `string` \| `Date`
 
-Defined in: src/types/options.ts:27
+Defined in: [src/types/options.ts:30](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/types/options.ts#L30)
 
 Only include entries updated on/before this date.
 
@@ -163,7 +163,7 @@ Only include entries updated on/before this date.
 
 > `optional` **updatedMin?**: `string` \| `Date`
 
-Defined in: src/types/options.ts:25
+Defined in: [src/types/options.ts:28](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/types/options.ts#L28)
 
 Only include entries updated on/after this date.
 

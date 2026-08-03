@@ -1,4 +1,4 @@
-(() => {
+(async () => {
 	const blog = new Blogr(BLOG_URL, API_OPTS);
 
 	function el(id) {
@@ -21,7 +21,7 @@
 				? urls
 						.map(
 							(u) => `
-					<div class="post-card cursor-pointer" data-url="${escapeHtml(u)}" title="Click to load in the playground below">
+					<div class="post-card" data-url="${escapeHtml(u)}" style="cursor:pointer" title="Click to load in the resizeImage() playground below">
 						<div class="post-card__thumb"><img data-src="${escapeHtml(u)}" alt=""></div>
 					</div>`,
 						)
@@ -33,9 +33,8 @@
 				window.BlogrPlugins.lazify(gallery.querySelectorAll("img[data-src]"));
 			gallery.querySelectorAll(".post-card").forEach((card) =>
 				card.addEventListener("click", () => {
-					el("bi-url").value = card.dataset.url;
-					buildImage();
-					el("bi-url").scrollIntoView({ behavior: "smooth", block: "center" });
+					el("rz-url").value = card.dataset.url;
+					el("rz-url").scrollIntoView({ behavior: "smooth", block: "center" });
 				}),
 			);
 		} catch (err) {
@@ -45,150 +44,12 @@
 	}
 	el("img-run").addEventListener("click", loadGallery);
 
-	function buildImage() {
-		const status = el("bi-status");
-		const url = el("bi-url").value.trim();
-		if (!url) {
-			el("bi-preview").innerHTML = "";
-			el("bi-code").innerHTML = "";
-			el("bi-supported").textContent = "";
-			return;
-		}
-		const keepExisting = el("bi-existing").checked;
-		const lines = [
-			`blog.image(${JSON.stringify(url)}, { existing: ${keepExisting} })`,
-		];
-
-		try {
-			const img = blog.image(url, { existing: keepExisting });
-
-			const w = el("bi-width").value;
-			if (w) {
-				img.width(Number(w));
-				lines.push(`  .width(${Number(w)})`);
-			}
-			const h = el("bi-height").value;
-			if (h) {
-				img.height(Number(h));
-				lines.push(`  .height(${Number(h)})`);
-			}
-			const s = el("bi-size").value;
-			if (s) {
-				img.size(Number(s));
-				lines.push(`  .size(${Number(s)})`);
-			}
-			if (el("bi-nu").checked) {
-				img.noUpscaling(true);
-				lines.push("  .noUpscaling(true)");
-			}
-			if (el("bi-crop").checked) {
-				img.crop(true);
-				lines.push("  .crop(true)");
-			}
-			if (el("bi-circular").checked) {
-				img.circularCrop(true);
-				lines.push("  .circularCrop(true)");
-			}
-			if (el("bi-square").checked) {
-				img.squareCrop(true);
-				lines.push("  .squareCrop(true)");
-			}
-			if (el("bi-flip-h").checked) {
-				img.flipHorizontally(true);
-				lines.push("  .flipHorizontally(true)");
-			}
-			if (el("bi-flip-v").checked) {
-				img.flipVertically(true);
-				lines.push("  .flipVertically(true)");
-			}
-			const rotate = el("bi-rotate").value;
-			if (rotate) {
-				img.rotate(Number(rotate));
-				lines.push(`  .rotate(${rotate})`);
-			}
-			const br = el("bi-borderradius").value;
-			if (br) {
-				img.borderRadius(Number(br));
-				lines.push(`  .borderRadius(${Number(br)})`);
-			}
-			const border = el("bi-border").value;
-			if (border) {
-				img.border(Number(border));
-				lines.push(`  .border(${Number(border)})`);
-			}
-			const color = el("bi-color").value.trim();
-			if (color) {
-				img.color(color);
-				lines.push(`  .color(${JSON.stringify(color)})`);
-			}
-			const bg = el("bi-bgcolor").value.trim();
-			if (bg) {
-				img.backgroundColor(bg);
-				lines.push(`  .backgroundColor(${JSON.stringify(bg)})`);
-			}
-			if (el("bi-pad").checked) {
-				img.pad(true);
-				lines.push("  .pad(true)");
-			}
-			const padColor = el("bi-padcolor").value.trim();
-			if (padColor) {
-				img.padColor(padColor);
-				lines.push(`  .padColor(${JSON.stringify(padColor)})`);
-			}
-			const format = el("bi-format").value;
-			if (format) {
-				img[format](true);
-				lines.push(`  .${format}(true)`);
-			}
-			if (el("bi-download").checked) {
-				img.download(true);
-				lines.push("  .download(true)");
-			}
-			const cacheDays = el("bi-cachedays").value;
-			if (cacheDays) {
-				img.cacheDays(Number(cacheDays));
-				lines.push(`  .cacheDays(${Number(cacheDays)})`);
-			}
-
-			const finalUrl = img.url();
-			lines.push("  .url();");
-			el("bi-code").innerHTML = highlightCode(lines.join("\n"));
-			el("bi-preview").innerHTML = `<img src="${escapeHtml(finalUrl)}" alt="">`;
-			el("bi-supported").textContent = img.isSupported()
-				? `✓ recognized host — ${finalUrl}`
-				: "✗ unrecognized host — passThrough would return the original url unchanged";
-			setStatus(status, "ok", "built");
-		} catch (err) {
-			setStatus(status, "error", err.message);
-			el("bi-preview").innerHTML = errorBox(err);
-			el("bi-code").innerHTML = highlightCode(lines.join("\n"));
-		}
-	}
-	el("bi-run").addEventListener("click", buildImage);
-	el("bi-reset").addEventListener("click", () => {
-		document
-			.querySelectorAll(
-				"#bi-width,#bi-height,#bi-size,#bi-borderradius,#bi-border,#bi-color,#bi-bgcolor,#bi-padcolor,#bi-cachedays",
-			)
-			.forEach((i) => (i.value = ""));
-		document
-			.querySelectorAll("#bi-rotate,#bi-format")
-			.forEach((s) => (s.value = ""));
-		document
-			.querySelectorAll(
-				"#bi-nu,#bi-crop,#bi-circular,#bi-square,#bi-flip-h,#bi-flip-v,#bi-pad,#bi-download",
-			)
-			.forEach((c) => (c.checked = false));
-		el("bi-existing").checked = true;
-		buildImage();
-	});
-
 	el("rz-run").addEventListener("click", () => {
 		const status = el("rz-status");
-		const url = el("bi-url").value.trim();
+		const url = el("rz-url").value.trim();
 		if (!url) {
 			el("rz-preview").innerHTML = emptyBox(
-				"Pick an image url in the playground above first.",
+				"Pick an image url from the gallery above, or paste one.",
 			);
 			return;
 		}
@@ -202,7 +63,6 @@
 		if (el("rz-flip").value) options.flip = el("rz-flip").value;
 		const rotate = Number(el("rz-rotate").value);
 		if (rotate) options.rotate = rotate;
-		if (el("rz-grayscale").checked) options.grayscale = true;
 
 		el("rz-code").innerHTML = highlightCode(
 			`BlogrPlugins.isSupportedImage(url);\nBlogrPlugins.resizeImage(url, ${JSON.stringify(options, null, 2)});`,

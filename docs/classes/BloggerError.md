@@ -6,7 +6,7 @@
 
 # Class: BloggerError
 
-Defined in: src/core/errors.ts:2
+Defined in: [src/core/errors.ts:2](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/core/errors.ts#L2)
 
 Base error type for all errors thrown by blogr.
 
@@ -25,7 +25,7 @@ Base error type for all errors thrown by blogr.
 
 > **new BloggerError**(`message`, `options?`): `BloggerError`
 
-Defined in: src/core/errors.ts:3
+Defined in: [src/core/errors.ts:3](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/core/errors.ts#L3)
 
 #### Parameters
 

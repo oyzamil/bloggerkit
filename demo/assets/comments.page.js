@@ -27,6 +27,9 @@
 				el("cp-postid").value = card.dataset.postId;
 			});
 		});
+
+		if (BlogrPlugins)
+			BlogrPlugins.lazify(container.querySelectorAll("img[data-src]"));
 	}
 
 	async function runComments() {

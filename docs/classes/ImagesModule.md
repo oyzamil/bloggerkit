@@ -6,7 +6,7 @@
 
 # Class: ImagesModule
 
-Defined in: src/modules/images.ts:7
+Defined in: [src/modules/images.ts:7](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/images.ts#L7)
 
 Aggregate image discovery across posts.
 
@@ -16,7 +16,7 @@ Aggregate image discovery across posts.
 
 > **new ImagesModule**(`posts`): `ImagesModule`
 
-Defined in: src/modules/images.ts:8
+Defined in: [src/modules/images.ts:8](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/images.ts#L8)
 
 #### Parameters
 
@@ -34,7 +34,7 @@ Defined in: src/modules/images.ts:8
 
 > **list**(`options?`, `requestOptions?`): `Promise`\<`string`[]\>
 
-Defined in: src/modules/images.ts:14
+Defined in: [src/modules/images.ts:14](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/images.ts#L14)
 
 Returns every unique image URL found in the content of up to
 `sampleSize` (default 25) of the blog's most recent posts.
@@ -49,7 +49,7 @@ Returns every unique image URL found in the content of up to
 
 ##### requestOptions?
 
-`RequestOptions` = `{}`
+[`RequestOptionsInterface`](../interfaces/RequestOptionsInterface.md) = `{}`
 
 #### Returns
 

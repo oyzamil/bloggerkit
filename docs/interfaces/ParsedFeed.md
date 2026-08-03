@@ -6,7 +6,7 @@
 
 # Interface: ParsedFeed
 
-Defined in: src/types/feed.ts:121
+Defined in: [src/types/feed.ts:121](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/types/feed.ts#L121)
 
 The parsed shape of any Blogger feed response (posts, pages or comments).
 
@@ -16,7 +16,7 @@ The parsed shape of any Blogger feed response (posts, pages or comments).
 
 > **blog**: [`BlogInfo`](BlogInfo.md) \| `null`
 
-Defined in: src/types/feed.ts:122
+Defined in: [src/types/feed.ts:122](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/types/feed.ts#L122)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: src/types/feed.ts:122
 
 > **comments**: [`Comment`](Comment.md)[] \| `null`
 
-Defined in: src/types/feed.ts:124
+Defined in: [src/types/feed.ts:124](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/types/feed.ts#L124)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: src/types/feed.ts:124
 
 > **itemsPerPage**: `number` \| `null`
 
-Defined in: src/types/feed.ts:125
+Defined in: [src/types/feed.ts:125](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/types/feed.ts#L125)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: src/types/feed.ts:125
 
 > **links**: [`Link`](Link.md)[]
 
-Defined in: src/types/feed.ts:131
+Defined in: [src/types/feed.ts:131](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/types/feed.ts#L131)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: src/types/feed.ts:131
 
 > **nextUrl**: `string` \| `null`
 
-Defined in: src/types/feed.ts:130
+Defined in: [src/types/feed.ts:130](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/types/feed.ts#L130)
 
 ***
 
@@ -56,7 +56,7 @@ Defined in: src/types/feed.ts:130
 
 > **posts**: [`Post`](Post.md)[] \| `null`
 
-Defined in: src/types/feed.ts:123
+Defined in: [src/types/feed.ts:123](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/types/feed.ts#L123)
 
 ***
 
@@ -64,7 +64,7 @@ Defined in: src/types/feed.ts:123
 
 > **previousUrl**: `string` \| `null`
 
-Defined in: src/types/feed.ts:129
+Defined in: [src/types/feed.ts:129](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/types/feed.ts#L129)
 
 ***
 
@@ -72,7 +72,7 @@ Defined in: src/types/feed.ts:129
 
 > **selfUrl**: `string` \| `null`
 
-Defined in: src/types/feed.ts:128
+Defined in: [src/types/feed.ts:128](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/types/feed.ts#L128)
 
 ***
 
@@ -80,7 +80,7 @@ Defined in: src/types/feed.ts:128
 
 > **startIndex**: `number` \| `null`
 
-Defined in: src/types/feed.ts:126
+Defined in: [src/types/feed.ts:126](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/types/feed.ts#L126)
 
 ***
 
@@ -88,4 +88,4 @@ Defined in: src/types/feed.ts:126
 
 > **totalResults**: `number` \| `null`
 
-Defined in: src/types/feed.ts:127
+Defined in: [src/types/feed.ts:127](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/types/feed.ts#L127)

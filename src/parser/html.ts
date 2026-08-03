@@ -105,16 +105,33 @@ function stripInline(text: string): string {
 		.replace(/<[^>]+>/g, "");
 }
 
-/** Extracts every unique `<img>` source URL from a post's HTML content. */
+/** Extracts every unique `<img>` source URL from a post's HTML content.
+ * Optionally includes `post.thumbnail`.
+ */
 export function extractImages(
 	input: Post | string | null | undefined,
+	includeThumbnail = true,
 ): string[] {
 	const html = resolveHtml(input);
 	const found = new Set<string>();
+
 	const regex = /<img\s+[^>]*?src=["']([^"']+)["'][^>]*>/gi;
+
 	for (const match of html.matchAll(regex)) {
-		if (match[1]) found.add(match[1]);
+		if (match[1]) {
+			found.add(match[1]);
+		}
 	}
+
+	if (
+		includeThumbnail &&
+		input &&
+		typeof input === "object" &&
+		input.thumbnail
+	) {
+		found.add(input.thumbnail);
+	}
+
 	return [...found];
 }
 

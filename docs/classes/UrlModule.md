@@ -6,7 +6,7 @@
 
 # Class: UrlModule
 
-Defined in: src/modules/url.ts:12
+Defined in: [src/modules/url.ts:12](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/url.ts#L12)
 
 Builds raw Blogger feed URLs without performing any request.
 
@@ -16,7 +16,7 @@ Builds raw Blogger feed URLs without performing any request.
 
 > **new UrlModule**(`client`): `UrlModule`
 
-Defined in: src/modules/url.ts:13
+Defined in: [src/modules/url.ts:13](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/url.ts#L13)
 
 #### Parameters
 
@@ -34,7 +34,7 @@ Defined in: src/modules/url.ts:13
 
 > **comments**(`postId?`, `options?`): `string`
 
-Defined in: src/modules/url.ts:50
+Defined in: [src/modules/url.ts:50](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/url.ts#L50)
 
 URL for the comments feed (blog-wide, or scoped to `postId`).
 
@@ -58,7 +58,7 @@ URL for the comments feed (blog-wide, or scoped to `postId`).
 
 > **page**(`pageId`, `options?`): `string`
 
-Defined in: src/modules/url.ts:40
+Defined in: [src/modules/url.ts:40](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/url.ts#L40)
 
 URL for a single page entry.
 
@@ -82,7 +82,7 @@ URL for a single page entry.
 
 > **pages**(`options?`): `string`
 
-Defined in: src/modules/url.ts:33
+Defined in: [src/modules/url.ts:33](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/url.ts#L33)
 
 URL for the pages feed.
 
@@ -102,7 +102,7 @@ URL for the pages feed.
 
 > **post**(`postId`, `options?`): `string`
 
-Defined in: src/modules/url.ts:23
+Defined in: [src/modules/url.ts:23](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/url.ts#L23)
 
 URL for a single post entry.
 
@@ -126,7 +126,7 @@ URL for a single post entry.
 
 > **posts**(`options?`): `string`
 
-Defined in: src/modules/url.ts:16
+Defined in: [src/modules/url.ts:16](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/modules/url.ts#L16)
 
 URL for the posts feed.
 

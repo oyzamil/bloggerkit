@@ -362,8 +362,6 @@ await blog.images();
 await blog.images({ sampleSize: 100 });
 ```
 
-> **Note:** blogr no longer ships a fluent image-transform helper (previously `BloggerImage`/`blog.image()`) — bring your own image library for resizing/cropping/format conversion.
-
 ## Raw feed URLs (no request made)
 
 `blog.url` builds feed URLs synchronously — nothing is fetched.

@@ -1,5 +1,6 @@
 /** Global namespace used to stash pending JSONP callbacks in the browser. */
 export const JSONP_NAMESPACE = "__blogr_jsonp__";
+export const FALLBACK_IMAGE = "";
 
 /** Default number of items requested per page. */
 export const DEFAULT_LIMIT = 25;

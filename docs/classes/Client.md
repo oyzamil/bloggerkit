@@ -6,7 +6,7 @@
 
 # Class: Client
 
-Defined in: src/core/client.ts:42
+Defined in: [src/core/client.ts:42](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/core/client.ts#L42)
 
 Resolves a blog URL or numeric id into request base URLs, and performs
 (optionally cached, event-emitting) requests against the Blogger feed API.
@@ -17,7 +17,7 @@ Resolves a blog URL or numeric id into request base URLs, and performs
 
 > **new Client**(`urlOrId`, `options?`): `Client`
 
-Defined in: src/core/client.ts:52
+Defined in: [src/core/client.ts:52](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/core/client.ts#L52)
 
 #### Parameters
 
@@ -39,7 +39,7 @@ Defined in: src/core/client.ts:52
 
 > `readonly` **cache**: [`Cache`](Cache.md)
 
-Defined in: src/core/client.ts:44
+Defined in: [src/core/client.ts:44](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/core/client.ts#L44)
 
 ***
 
@@ -47,7 +47,7 @@ Defined in: src/core/client.ts:44
 
 > `readonly` **events**: [`EventEmitter`](EventEmitter.md)
 
-Defined in: src/core/client.ts:43
+Defined in: [src/core/client.ts:43](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/core/client.ts#L43)
 
 ## Methods
 
@@ -55,7 +55,7 @@ Defined in: src/core/client.ts:43
 
 > **fetchRaw**\<`T`\>(`url`, `options?`): `Promise`\<`T`\>
 
-Defined in: src/core/client.ts:242
+Defined in: [src/core/client.ts:242](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/core/client.ts#L242)
 
 Low-level: fetch an arbitrary URL and return parsed JSON (no feed parsing).
 
@@ -87,7 +87,7 @@ Low-level: fetch an arbitrary URL and return parsed JSON (no feed parsing).
 
 > **getBlogId**(): `Promise`\<`string`\>
 
-Defined in: src/core/client.ts:118
+Defined in: [src/core/client.ts:118](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/core/client.ts#L118)
 
 #### Returns
 
@@ -99,7 +99,7 @@ Defined in: src/core/client.ts:118
 
 > **getBlogInfo**(`options?`): `Promise`\<[`BlogInfo`](../interfaces/BlogInfo.md)\>
 
-Defined in: src/core/client.ts:100
+Defined in: [src/core/client.ts:100](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/core/client.ts#L100)
 
 Resolves (and caches) blog-level metadata, needed to discover id/url lazily.
 
@@ -121,7 +121,7 @@ Resolves (and caches) blog-level metadata, needed to discover id/url lazily.
 
 > **getBlogUrl**(): `Promise`\<`string`\>
 
-Defined in: src/core/client.ts:123
+Defined in: [src/core/client.ts:123](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/core/client.ts#L123)
 
 #### Returns
 
@@ -133,7 +133,7 @@ Defined in: src/core/client.ts:123
 
 > **getDomainBase**(): `Promise`\<`string`\>
 
-Defined in: src/core/client.ts:129
+Defined in: [src/core/client.ts:129](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/core/client.ts#L129)
 
 #### Returns
 
@@ -145,7 +145,7 @@ Defined in: src/core/client.ts:129
 
 > **getServiceBase**(): `Promise`\<`string`\>
 
-Defined in: src/core/client.ts:133
+Defined in: [src/core/client.ts:133](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/core/client.ts#L133)
 
 #### Returns
 
@@ -157,7 +157,7 @@ Defined in: src/core/client.ts:133
 
 > **req**(`path`, `options?`): `Promise`\<[`ParsedFeed`](../interfaces/ParsedFeed.md)\>
 
-Defined in: src/core/client.ts:149
+Defined in: [src/core/client.ts:149](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/core/client.ts#L149)
 
 Performs a request against the Blogger feed API and returns the parsed feed.
 
@@ -181,7 +181,7 @@ Performs a request against the Blogger feed API and returns the parsed feed.
 
 > **reqRaw**(`path`, `format`, `options?`): `Promise`\<`string`\>
 
-Defined in: src/core/client.ts:211
+Defined in: [src/core/client.ts:211](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/core/client.ts#L211)
 
 Fetches a feed url in `atom` or `rss` format and returns the raw XML text.
 
@@ -209,7 +209,7 @@ Fetches a feed url in `atom` or `rss` format and returns the raw XML text.
 
 > **resolveUrl**(`path`, `options?`): `URL`
 
-Defined in: src/core/client.ts:138
+Defined in: [src/core/client.ts:138](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/core/client.ts#L138)
 
 Returns the raw feed URL for `path` without performing a request.
 

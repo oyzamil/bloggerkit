@@ -23,7 +23,7 @@
 		{
 			href: "images.html",
 			title: "Images",
-			fns: "images() · image() → BloggerImage",
+			fns: "images()",
 		},
 		{
 			href: "feed-urls.html",

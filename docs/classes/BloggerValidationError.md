@@ -6,7 +6,7 @@
 
 # Class: BloggerValidationError
 
-Defined in: src/core/errors.ts:28
+Defined in: [src/core/errors.ts:28](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/core/errors.ts#L28)
 
 Thrown when constructor/method arguments are invalid.
 
@@ -20,7 +20,7 @@ Thrown when constructor/method arguments are invalid.
 
 > **new BloggerValidationError**(`message`): `BloggerValidationError`
 
-Defined in: src/core/errors.ts:29
+Defined in: [src/core/errors.ts:29](https://github.com/oyzamil/blogr/blob/1c6cb2dad175a1dc9d674306d1fc362c093f80ba/src/core/errors.ts#L29)
 
 #### Parameters
 

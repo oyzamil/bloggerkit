@@ -23,8 +23,9 @@
 			<div class="page-head">
 				<span class="eyebrow">Media</span>
 				<h1>Images</h1>
-				<p>Aggregate image discovery, the full fluent <code>BloggerImage</code> transform builder, and a
-					side-by-side with <code>blogr-plugins</code>' <code>resizeImage()</code>.</p>
+				<p>Aggregate image discovery, plus a side-by-side with <code>blogr-plugins</code>'
+					<code>resizeImage()</code> for transforming a single image URL.
+				</p>
 			</div>
 
 			<div class="card">
@@ -35,101 +36,12 @@
 				<div class="card__body">
 					<div class="actions-row">
 						<input type="number" id="img-sample" value="15" min="1" max="50"
-							class="w-[90px] p-2 rounded-sm border border-border bg-paper text-ink" />
+							style="width:90px;padding:8px;border-radius:8px;border:1px solid var(--border);background:var(--paper);color:var(--ink)" />
 						<button class="btn btn-primary btn-sm" id="img-run">Run blog.images()</button>
 					</div>
 					<div class="status-line" id="img-status"></div>
-					<div id="img-gallery" class="post-grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))]"></div>
-				</div>
-			</div>
-
-			<div class="card">
-				<div class="card__head">
-					<h3>blog.image(url) → BloggerImage</h3>
-					<span class="endpoint">fluent, chainable transform builder</span>
-				</div>
-				<div class="card__desc">Click a thumbnail above to load it here, or paste any
-					<code>*.bp.blogspot.com</code> / <code>googleusercontent.com</code> URL.
-				</div>
-				<div class="card__body">
-					<div class="field mb-4">
-						<label for="bi-url">image url</label>
-						<input type="text" id="bi-url" placeholder="https://1.bp.blogspot.com/…/s72-c/photo.jpg" />
-					</div>
-
-					<div class="controls">
-						<div class="field"><label for="bi-width">width()</label><input type="number" id="bi-width"
-								placeholder="px" /></div>
-						<div class="field"><label for="bi-height">height()</label><input type="number" id="bi-height"
-								placeholder="px" /></div>
-						<div class="field"><label for="bi-size">size()</label><input type="number" id="bi-size"
-								placeholder="px" /></div>
-						<div class="field"><label for="bi-rotate">rotate()</label>
-							<select id="bi-rotate">
-								<option value="">—</option>
-								<option value="90">90</option>
-								<option value="180">180</option>
-								<option value="270">270</option>
-							</select>
-						</div>
-						<div class="field"><label for="bi-borderradius">borderRadius()</label><input type="number"
-								id="bi-borderradius" placeholder="px" /></div>
-						<div class="field"><label for="bi-border">border()</label><input type="number" id="bi-border"
-								placeholder="px" /></div>
-						<div class="field"><label for="bi-color">color()</label><input type="text" id="bi-color"
-								placeholder="0xff0000" /></div>
-						<div class="field"><label for="bi-bgcolor">backgroundColor()</label><input type="text"
-								id="bi-bgcolor" placeholder="0xffffff" /></div>
-						<div class="field"><label for="bi-padcolor">padColor()</label><input type="text"
-								id="bi-padcolor" placeholder="0x000000" /></div>
-						<div class="field"><label for="bi-cachedays">cacheDays()</label><input type="number"
-								id="bi-cachedays" placeholder="days" /></div>
-						<div class="field"><label for="bi-format">format toggle</label>
-							<select id="bi-format">
-								<option value="">— (existing)</option>
-								<option value="jpeg">jpeg()</option>
-								<option value="png">png()</option>
-								<option value="webp">webp()</option>
-								<option value="animatedWebp">animatedWebp()</option>
-								<option value="gif">gif()</option>
-								<option value="mp4">mp4()</option>
-							</select>
-						</div>
-					</div>
-					<div class="controls grid-cols-[repeat(auto-fill,minmax(140px,1fr))]">
-						<div class="field checkfield"><input type="checkbox" id="bi-existing" checked /><label
-								for="bi-existing">keep existing params</label></div>
-						<div class="field checkfield"><input type="checkbox" id="bi-nu" /><label
-								for="bi-nu">noUpscaling()</label></div>
-						<div class="field checkfield"><input type="checkbox" id="bi-crop" /><label
-								for="bi-crop">crop()</label></div>
-						<div class="field checkfield"><input type="checkbox" id="bi-circular" /><label
-								for="bi-circular">circularCrop()</label></div>
-						<div class="field checkfield"><input type="checkbox" id="bi-square" /><label
-								for="bi-square">squareCrop()</label></div>
-						<div class="field checkfield"><input type="checkbox" id="bi-flip-h" /><label
-								for="bi-flip-h">flipHorizontally()</label></div>
-						<div class="field checkfield"><input type="checkbox" id="bi-flip-v" /><label
-								for="bi-flip-v">flipVertically()</label></div>
-						<div class="field checkfield"><input type="checkbox" id="bi-pad" /><label
-								for="bi-pad">pad()</label></div>
-						<div class="field checkfield"><input type="checkbox" id="bi-download" /><label
-								for="bi-download">download()</label></div>
-					</div>
-
-					<div class="actions-row">
-						<button class="btn btn-primary" id="bi-run">Build url()</button>
-						<button class="btn btn-ghost btn-sm" id="bi-reset">Reset options</button>
-					</div>
-
-					<div class="status-line" id="bi-status"></div>
-					<div class="grid-2">
-						<div>
-							<pre class="code" id="bi-code"></pre>
-							<div class="badge mt-2.5" id="bi-supported"></div>
-						</div>
-						<div class="img-preview" id="bi-preview"></div>
-					</div>
+					<div id="img-gallery" class="post-grid"
+						style="grid-template-columns:repeat(auto-fill,minmax(140px,1fr))"></div>
 				</div>
 			</div>
 
@@ -138,9 +50,15 @@
 					<h3>vs. blogr-plugins resizeImage()</h3>
 					<span class="endpoint">BlogrPlugins.resizeImage · isSupportedImage</span>
 				</div>
-				<div class="card__desc">Same idea as <code>blog.image()</code>, ported as a one-shot function instead of
-					a fluent builder — handy when you don't need a builder.</div>
+				<div class="card__desc">Transform a single image URL (resize/crop/format/flip/rotate) — click a
+					thumbnail above to load it here, or paste any <code>*.bp.blogspot.com</code> /
+					<code>googleusercontent.com</code> URL.
+				</div>
 				<div class="card__body">
+					<div class="field" style="margin-bottom:16px">
+						<label for="rz-url">image url</label>
+						<input type="text" id="rz-url" placeholder="https://1.bp.blogspot.com/…/s72-c/photo.jpg" />
+					</div>
 					<div class="controls">
 						<div class="field"><label for="rz-width">width</label><input type="number" id="rz-width"
 								value="400" /></div>
@@ -175,8 +93,6 @@
 								<option value="270">270</option>
 							</select>
 						</div>
-						<div class="field checkfield"><input type="checkbox" id="rz-grayscale" /><label
-								for="rz-grayscale">grayscale</label></div>
 					</div>
 					<div class="actions-row"><button class="btn btn-primary btn-sm" id="rz-run">Run
 							resizeImage()</button></div>
