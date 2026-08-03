@@ -1,5 +1,5 @@
-interface CacheEntry {
-	value: unknown;
+interface CacheEntry<T = unknown> {
+	value: T;
 	expiresAt: number | null;
 }
 
@@ -9,7 +9,7 @@ interface CacheEntry {
  */
 export class Cache {
 	private enabled = false;
-	private readonly store = new Map<string, CacheEntry>();
+	private readonly store = new Map<string, CacheEntry<any>>();
 	private ttlMs: number | null = null;
 
 	/** Enables caching. Optionally pass a TTL in milliseconds. */
@@ -31,6 +31,15 @@ export class Cache {
 		return this;
 	}
 
+	delete(key: string): boolean {
+		return this.store.delete(key);
+	}
+	get size(): number {
+		return this.store.size;
+	}
+	has(key: string): boolean {
+		return this.get(key) !== undefined;
+	}
 	get isEnabled(): boolean {
 		return this.enabled;
 	}
@@ -39,7 +48,7 @@ export class Cache {
 		if (!this.enabled) return undefined;
 		const entry = this.store.get(key);
 		if (!entry) return undefined;
-		if (entry.expiresAt !== null && entry.expiresAt < Date.now()) {
+		if (entry.expiresAt !== null && entry.expiresAt <= Date.now()) {
 			this.store.delete(key);
 			return undefined;
 		}

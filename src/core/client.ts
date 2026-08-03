@@ -40,8 +40,8 @@ function getDomainBase(origin: string): string {
  * (optionally cached, event-emitting) requests against the Blogger feed API.
  */
 export class Client {
-	readonly events = new EventEmitter();
-	readonly cache = new Cache();
+	readonly events: EventEmitter;
+	readonly cache: Cache;
 
 	private readonly jsonp: boolean;
 	private base: string;
@@ -50,6 +50,9 @@ export class Client {
 	private blogInfoPromise: Promise<ParsedFeed["blog"]> | undefined;
 
 	constructor(urlOrId: string | URL, options: ClientOptions = {}) {
+		this.events = new EventEmitter();
+		this.cache = new Cache();
+
 		if (isString(urlOrId) && /^\d{10,24}$/.test(urlOrId)) {
 			this.blogId = urlOrId;
 			this.base = getServiceBase(urlOrId);
