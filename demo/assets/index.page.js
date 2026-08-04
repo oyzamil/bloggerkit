@@ -13,6 +13,11 @@
 			title: "Labels & categories",
 			fns: "labels() · label() · categories()",
 		},
+		{
+			href: "authors.html",
+			title: "Authors",
+			fns: "authors()",
+		},
 		{ href: "search.html", title: "Search", fns: "search(string | object)" },
 		{
 			href: "archive.html",
@@ -37,8 +42,8 @@
 		},
 		{
 			href: "advanced.html",
-			title: "Advanced & plugins",
-			fns: "request() · fetch() · use() · on/off · cache · blogr-plugins",
+			title: "Advanced",
+			fns: "request() · fetch() · use() · on/off · cache",
 		},
 	];
 

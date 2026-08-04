@@ -18,6 +18,7 @@ const NAV = [
 			{ href: "posts.html", label: "Posts" },
 			{ href: "pages.html", label: "Pages" },
 			{ href: "labels.html", label: "Labels & categories" },
+			{ href: "authors.html", label: "Authors" },
 			{ href: "search.html", label: "Search" },
 			{ href: "archive.html", label: "Archive" },
 			{ href: "comments.html", label: "Comments" },
@@ -32,7 +33,7 @@ const NAV = [
 		group: "Toolkit",
 		items: [
 			{ href: "utils.html", label: "Utilities" },
-			{ href: "advanced.html", label: "Advanced & plugins" },
+			{ href: "advanced.html", label: "Advanced" },
 		],
 	},
 ];
